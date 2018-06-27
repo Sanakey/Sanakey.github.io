@@ -17,7 +17,7 @@
 <meta property="og:description" content="前言在前端开发中，我们经常会遇到样式切换操作。 在浏览器环境下，使用原生JS或jQuery可以很方便的对dom进行操作，从而达到基本的样式切换效果。但是在微信小程序中没有dom，我们不能直接对dom进行操作。 这应该会让之前一直在浏览器环境开发且没有接触过数据驱动类框架的朋友很不习惯，我也是其中一员，在使用小程序开发之前，我只用过jQuery等基于事件驱动的框架。每当遇到样式切换操作时，清除其他样">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://s1.ax2x.com/2018/06/27/nz4Sa.png">
-<meta property="og:updated_time" content="2018-06-27T13:31:40.076Z">
+<meta property="og:updated_time" content="2018-06-27T13:32:19.682Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微信小程序入门--二级菜单">
 <meta name="twitter:description" content="前言在前端开发中，我们经常会遇到样式切换操作。 在浏览器环境下，使用原生JS或jQuery可以很方便的对dom进行操作，从而达到基本的样式切换效果。但是在微信小程序中没有dom，我们不能直接对dom进行操作。 这应该会让之前一直在浏览器环境开发且没有接触过数据驱动类框架的朋友很不习惯，我也是其中一员，在使用小程序开发之前，我只用过jQuery等基于事件驱动的框架。每当遇到样式切换操作时，清除其他样">
@@ -210,7 +210,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;view class=&quot;class1&quot; style=&quot;&#123;&#123;newStyle&#125;&#125;&quot;&gt;&lt;/view&gt;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data: &#123;</span><br><span class="line">    num: <span class="literal">undefined</span>, <span class="comment">//只声明不初始化的情况下，变量的初始值为undefined</span></span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+<p>接下来我们回到最先写的wxml上面，内是支持简单运算的，所以使用三目运算符也没问题。这里的<code>num</code>对应js文件里面<code>data</code>的变量，相当于<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data: &#123;</span><br><span class="line">    num: <span class="literal">undefined</span>, <span class="comment">//只声明不初始化的情况下，变量的初始值为undefined</span></span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure></p>
 <p>当<code>num==0</code>时，这里元素的<code>class</code>名就会变为<code>active</code>，否则为空。因此我们的目的就是<strong>切换num值来改变样式</strong>。那么怎么切换<code>num</code>值呢？</p>
 <p>我们接着看，会发现<code>data-num=&#39;0&#39;</code>这个属性，在微信小程序中，允许通过以<code>data-</code>开头的方式来自定义变量，这里面的数据会传到事件对象中，在本例中，可以在点击事件触发后，在<br><code>e.target.dataset.num</code>的里面获取到自定义的<code>data-num</code>值。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">e  <span class="comment">//事件对象，通过事件函数的一个参数传递，可以是任何值</span></span><br><span class="line">target   <span class="comment">//事件捕获的元素</span></span><br><span class="line">dataset   <span class="comment">//以data-开头定义的变量</span></span><br><span class="line">num   <span class="comment">//data-num的值</span></span><br><span class="line"><span class="comment">// 关于target和currentTarget，catchtap事件和bindtap事件我会专门用一篇文章介绍</span></span><br></pre></td></tr></table></figure>
