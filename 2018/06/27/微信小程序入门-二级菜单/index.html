@@ -17,7 +17,7 @@
 <meta property="og:description" content="前言在前端开发中，我们经常会遇到样式切换操作。 在浏览器环境下，使用原生JS或jQuery可以很方便的对dom进行操作，从而达到基本的样式切换效果。但是在微信小程序中没有dom，我们不能直接对dom进行操作。 这应该会让之前一直在浏览器环境开发且没有接触过数据驱动类框架的朋友很不习惯，我也是其中一员，在使用小程序开发之前，我只用过jQuery等基于事件驱动的框架。每当遇到样式切换操作时，清除其他样">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://s1.ax2x.com/2018/06/27/nz4Sa.png">
-<meta property="og:updated_time" content="2018-06-27T13:29:58.739Z">
+<meta property="og:updated_time" content="2018-06-27T13:30:40.214Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微信小程序入门--二级菜单">
 <meta name="twitter:description" content="前言在前端开发中，我们经常会遇到样式切换操作。 在浏览器环境下，使用原生JS或jQuery可以很方便的对dom进行操作，从而达到基本的样式切换效果。但是在微信小程序中没有dom，我们不能直接对dom进行操作。 这应该会让之前一直在浏览器环境开发且没有接触过数据驱动类框架的朋友很不习惯，我也是其中一员，在使用小程序开发之前，我只用过jQuery等基于事件驱动的框架。每当遇到样式切换操作时，清除其他样">
@@ -186,6 +186,33 @@
 <p>这应该会让之前一直在浏览器环境开发且没有接触过数据驱动类框架的朋友很不习惯，我也是其中一员，在使用小程序开发之前，我只用过jQuery等基于事件驱动的框架。每当遇到样式切换操作时，清除其他样式，给当前点击元素添加样式的思想已经深入骨髓，这种情况下去接触小程序，确实一时半会转不过神来。</p>
 <p>现在就由我来以二级菜单为例，给大家简单介绍一下基于数据驱动的样式切换该怎样实现。<br>这是完成效果图<br><img src="https://s1.ax2x.com/2018/06/27/nz4Sa.png" alt="image"></p>
 <a id="more"></a>
+<h2 id="选项卡菜单"><a href="#选项卡菜单" class="headerlink" title="选项卡菜单"></a>选项卡菜单</h2><p>在做二级菜单之前，我们先来做一个最常见的一级选项卡菜单</p>
+<p>首先是wxml部分<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">'nav'</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">'&#123;&#123;num==0?"active":""&#125;&#125;'</span> <span class="attr">data-num</span>=<span class="string">'0'</span> <span class="attr">catchtap</span>=<span class="string">'changeClass'</span>&gt;</span>22<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">'&#123;&#123;num==1?"active":""&#125;&#125;'</span> <span class="attr">data-num</span>=<span class="string">'1'</span> <span class="attr">catchtap</span>=<span class="string">'changeClass'</span>&gt;</span>33<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">'&#123;&#123;num==2?"active":""&#125;&#125;'</span> <span class="attr">data-num</span>=<span class="string">'2'</span> <span class="attr">catchtap</span>=<span class="string">'changeClass'</span>&gt;</span>233<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>然后是样式部分，选中时字体变红<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.active</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>:red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>js部分<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">changeClass:<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(e);</span><br><span class="line">    <span class="keyword">this</span>.setData(&#123;</span><br><span class="line">        num: e.target.dataset.num;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="解释一下思路"><a href="#解释一下思路" class="headerlink" title="解释一下思路"></a>解释一下思路</h3><p>总结一下我们在浏览器环境下的样式切换思路</p>
+<blockquote>
+<ol>
+<li>通过js查找到元素然后修改其class名</li>
+<li>添加一个class名，覆盖前面的样式</li>
+<li>修改行内样式，覆盖其他的样式</li>
+</ol>
+</blockquote>
+<p>这个思路在小程序里同样适用，只是实现方法稍微有点不一样</p>
+<ol>
+<li><p>修改class名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;view class=&quot;&#123;&#123;className&#125;&#125;&quot;&gt;&lt;/view&gt;</span><br><span class="line">//&#123;&#123;&#125;&#125;内的className为变量，js里通过setData方法修改这个变量，页面会实时刷新，再也不用操作dom节点查找元素啦~</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加一个class2，覆盖前面的class1</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;view class=&quot;class1 &#123;&#123;class2&#125;&#125;&quot;&gt;&lt;/view&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改行内样式，覆盖其他的样式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;view class=&quot;class1&quot; style=&quot;&#123;&#123;newStyle&#125;&#125;&quot;&gt;&lt;/view&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data: &#123;</span><br><span class="line">    num: <span class="literal">undefined</span>, <span class="comment">//只声明不初始化的情况下，变量的初始值为undefined</span></span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+<p>当<code>num==0</code>时，这里元素的<code>class</code>名就会变为<code>active</code>，否则为空。因此我们的目的就是<strong>切换num值来改变样式</strong>。那么怎么切换<code>num</code>值呢？</p>
+<p>我们接着看，会发现<code>data-num=&#39;0&#39;</code>这个属性，在微信小程序中，允许通过以<code>data-</code>开头的方式来自定义变量，这里面的数据会传到事件对象中，在本例中，可以在点击事件触发后，在<br><code>e.target.dataset.num</code>的里面获取到自定义的<code>data-num</code>值。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">e  <span class="comment">//事件对象，通过事件函数的一个参数传递，可以是任何值</span></span><br><span class="line">target   <span class="comment">//事件捕获的元素</span></span><br><span class="line">dataset   <span class="comment">//以data-开头定义的变量</span></span><br><span class="line">num   <span class="comment">//data-num的值</span></span><br><span class="line"><span class="comment">// 关于target和currentTarget，catchtap事件和bindtap事件我会专门用一篇文章介绍</span></span><br></pre></td></tr></table></figure>
 <p>最后我们通过<code>catchtap</code>事件，利用微信小程序自带的<code>this.setData</code>方法修改<code>num</code>的值为当前点击<br>的元素里定义的<code>data-num</code>值。也就是<strong>num的值==当前点击的元素时，class名改变</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.setData(&#123;</span><br><span class="line">        num: e.target.dataset.num;</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure></p>
 <p>这样，利用数据绑定的形式修改样式的效果就达到了。</p>
@@ -353,7 +380,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二级菜单"><span class="toc-number">2.</span> <span class="toc-text">二级菜单</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#wxml"><span class="toc-number">2.1.</span> <span class="toc-text">wxml</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#wxss"><span class="toc-number">2.2.</span> <span class="toc-text">wxss</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#js"><span class="toc-number">2.3.</span> <span class="toc-text">js</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#选项卡菜单"><span class="toc-number">2.</span> <span class="toc-text">选项卡菜单</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#解释一下思路"><span class="toc-number">2.1.</span> <span class="toc-text">解释一下思路</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二级菜单"><span class="toc-number">3.</span> <span class="toc-text">二级菜单</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#wxml"><span class="toc-number">3.1.</span> <span class="toc-text">wxml</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#wxss"><span class="toc-number">3.2.</span> <span class="toc-text">wxss</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#js"><span class="toc-number">3.3.</span> <span class="toc-text">js</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
