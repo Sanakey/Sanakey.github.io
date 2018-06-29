@@ -998,7 +998,7 @@ a {
   content: '\f26e';
 }
 #gitalk-container {
-  margin: 0 40px;
+  padding: 0 40px;
 }
 .duoshuo {
   padding: 0 40px;
