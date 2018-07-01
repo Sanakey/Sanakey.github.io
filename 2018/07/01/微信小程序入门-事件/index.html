@@ -15,18 +15,22 @@
 
 
 
-<meta name="description" content="#HelloWorld我的第一篇博文">
-<meta name="keywords" content="前端，博客，HTML5，CSS3，JavaScript">
+<meta name="description" content="前言前面我曾写过一篇介绍微信小程序实现二级菜单的小教程，里面留下了一个坑，那就是关于小程序里的事件，当时并没有过多介绍。 对于新人来说，bind与catch、event对象里的target与currentTarget是一道门槛，需要我们花点心思去搞明白它们的区别，在工作中才能灵活运用，提高开发效率。 好了，接下来开始详细介绍它们的区别。">
+<meta name="keywords" content="微信小程序,JavaScript,小程序">
 <meta property="og:type" content="article">
-<meta property="og:title" content="My First Post">
-<meta property="og:url" content="https://sanakey.github.io/2018/06/25/My-First-Post/index.html">
+<meta property="og:title" content="微信小程序入门--事件">
+<meta property="og:url" content="https://sanakey.github.io/2018/07/01/微信小程序入门-事件/index.html">
 <meta property="og:site_name" content="Sanakey的小站">
-<meta property="og:description" content="#HelloWorld我的第一篇博文">
+<meta property="og:description" content="前言前面我曾写过一篇介绍微信小程序实现二级菜单的小教程，里面留下了一个坑，那就是关于小程序里的事件，当时并没有过多介绍。 对于新人来说，bind与catch、event对象里的target与currentTarget是一道门槛，需要我们花点心思去搞明白它们的区别，在工作中才能灵活运用，提高开发效率。 好了，接下来开始详细介绍它们的区别。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-06-25T08:22:32.757Z">
+<meta property="og:image" content="https://s1.ax2x.com/2018/07/01/ntoAX.png">
+<meta property="og:image" content="https://s1.ax2x.com/2018/07/01/ntqql.png">
+<meta property="og:image" content="https://s1.ax2x.com/2018/07/01/n63jJ.png">
+<meta property="og:updated_time" content="2018-07-01T15:53:54.111Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="My First Post">
-<meta name="twitter:description" content="#HelloWorld我的第一篇博文">
+<meta name="twitter:title" content="微信小程序入门--事件">
+<meta name="twitter:description" content="前言前面我曾写过一篇介绍微信小程序实现二级菜单的小教程，里面留下了一个坑，那就是关于小程序里的事件，当时并没有过多介绍。 对于新人来说，bind与catch、event对象里的target与currentTarget是一道门槛，需要我们花点心思去搞明白它们的区别，在工作中才能灵活运用，提高开发效率。 好了，接下来开始详细介绍它们的区别。">
+<meta name="twitter:image" content="https://s1.ax2x.com/2018/07/01/ntoAX.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -58,7 +62,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>My First Post | Sanakey的小站</title>
+<title>微信小程序入门--事件 | Sanakey的小站</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -293,11 +297,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-My-First-Post" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-微信小程序入门-事件" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/06/25/My-First-Post/" class="article-date">
-      <time datetime="2018-06-25T08:19:06.000Z" itemprop="datePublished">2018-06-25</time>
+      <a href="/2018/07/01/微信小程序入门-事件/" class="article-date">
+      <time datetime="2018-07-01T14:19:51.000Z" itemprop="datePublished">2018-07-01</time>
 </a>
 
 
@@ -312,7 +316,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      My First Post
+      微信小程序入门--事件
     </h1>
   
 
@@ -320,8 +324,16 @@
       
       <div class="article-info article-info-post">
         
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/微信小程序/">微信小程序</a>
+    </div>
+
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小程序/">小程序</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信小程序/">微信小程序</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -329,7 +341,27 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>#HelloWorld<br>我的第一篇博文</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>前面我曾写过一篇介绍微信小程序实现二级菜单的小教程，里面留下了一个坑，那就是关于小程序里的事件，当时并没有过多介绍。</p>
+<p>对于新人来说，<code>bind</code>与<code>catch</code>、<code>event</code>对象里的<code>target</code>与<code>currentTarget</code>是一道门槛，需要我们花点心思去搞明白它们的区别，在工作中才能灵活运用，提高开发效率。</p>
+<p>好了，接下来开始详细介绍它们的区别。<br><a id="more"></a></p>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><p>我们从下面的例子来对事件进行详细说明</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>wxml<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"fl-row"</span> <span class="attr">bindtap</span>=<span class="string">"parent"</span> <span class="attr">data-str</span>=<span class="string">"我是最外层的父级"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">'item'</span> <span class="attr">data-str</span>=<span class="string">"我是红色部分"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"li"</span> <span class="attr">data-str</span>=<span class="string">"我是蓝色部分"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">text</span> <span class="attr">class</span>=<span class="string">'text'</span> <span class="attr">catchtap</span>=<span class="string">"child"</span> <span class="attr">data-str</span>=<span class="string">"我是产品"</span>&gt;</span>产品<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">'item'</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"li"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">text</span> <span class="attr">class</span>=<span class="string">'text'</span>&gt;</span>空间<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>wxss<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.fl-row</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">flex-direction</span>: row;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">20</span>rpx <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.li</span>&#123;</span><br><span class="line">  <span class="attribute">background</span>: blue;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.text</span>&#123;</span><br><span class="line"> <span class="attribute">background</span>: yellow;</span><br><span class="line">&#125;</span><br><span class="line"> <span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">flex</span>: <span class="number">1</span>;</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">  <span class="attribute">font-weight</span>: bold;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">50</span>rpx <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">background</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>javascript<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">parent: <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(e);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"触发了bindTap事件"</span>);</span><br><span class="line">&#125;,</span><br><span class="line">child: <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(e);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"触发了catchTap事件"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">点击第一个item里面的padding位置时，changeClass打印结果</span><br><span class="line">&#123;</span><br><span class="line">currentTarget:</span><br><span class="line">dataset:</span><br><span class="line">num:&quot;ddd&quot;</span><br><span class="line"></span><br><span class="line">target:</span><br><span class="line">dataset:</span><br><span class="line">num:&quot;1&quot;</span><br><span class="line">&#125;</span><br><span class="line">如果点击文字位置，只能打印出currentTarget里的num值</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">点击产品二字，事件为bindtap时，不阻止事件冒泡，Class打印结果先是23，然后才是e对象。</span><br><span class="line">如果为catchtap，事件冒泡被阻止，只打印23，不打印e对象。</span><br></pre></td></tr></table></figure>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><ol>
+<li><p>点击黄色的文字部分<br><img src="https://s1.ax2x.com/2018/07/01/ntoAX.png" alt="image"><br>打印结果如图所示，可以看到，触发了catchtap事件</p>
+</li>
+<li><p>点击蓝色部分<br><img src="https://s1.ax2x.com/2018/07/01/ntqql.png" alt="image"></p>
+</li>
+<li><p>点击红色部分<br><img src="https://s1.ax2x.com/2018/07/01/n63jJ.png" alt="image"></p>
+</li>
+</ol>
+<h2 id="事件详解"><a href="#事件详解" class="headerlink" title="事件详解"></a>事件详解</h2><h3 id="事件分类"><a href="#事件分类" class="headerlink" title="事件分类"></a>事件分类</h3><p>事件分为冒泡事件和非冒泡事件：</p>
+<ol>
+<li>冒泡事件：当一个组件上的事件被触发后，该事件会向父节点传递。</li>
+<li>非冒泡事件：当一个组件上的事件被触发后，该事件不会向父节点传递。</li>
+</ol>
 
       
     </div>
@@ -338,13 +370,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/06/25/My-First-Post/">My First Post</a></p>
+        <p><span>本文标题:</span><a href="/2018/07/01/微信小程序入门-事件/">微信小程序入门--事件</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Sanakey</a></p>
-        <p><span>发布时间:</span>2018-06-25, 16:19:06</p>
-        <p><span>最后更新:</span>2018-06-25, 16:22:32</p>
+        <p><span>发布时间:</span>2018-07-01, 22:19:51</p>
+        <p><span>最后更新:</span>2018-07-01, 23:53:54</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/06/25/My-First-Post/" title="My First Post">https://sanakey.github.io/2018/06/25/My-First-Post/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://sanakey.github.io/2018/06/25/My-First-Post/　　作者: Sanakey" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/07/01/微信小程序入门-事件/" title="微信小程序入门--事件">https://sanakey.github.io/2018/07/01/微信小程序入门-事件/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://sanakey.github.io/2018/07/01/微信小程序入门-事件/　　作者: Sanakey" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -356,16 +388,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/06/26/Github-Pages-Hexo从零开始的免费建站教程/">
-                    Github Pages+Hexo从零开始的免费建站教程
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/06/25/hello-world/">
-                    Hello World
+                <a href="/2018/06/27/微信小程序入门-二级菜单/">
+                    微信小程序入门--二级菜单
                 </a>
             </div>
         
@@ -377,7 +403,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#案例"><span class="toc-number">2.</span> <span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#代码"><span class="toc-number">2.1.</span> <span class="toc-text">代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试"><span class="toc-number">2.2.</span> <span class="toc-text">测试</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事件详解"><span class="toc-number">3.</span> <span class="toc-text">事件详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#事件分类"><span class="toc-number">3.1.</span> <span class="toc-text">事件分类</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -413,7 +439,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"My First Post　| Sanakey的小站　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"微信小程序入门--事件　| Sanakey的小站　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -437,7 +463,7 @@
                 clientID:  '4d79ef314d7eecff6c86',
                 clientSecret: '69414bfea90934424011146006786eca04c840d9',
                 repo: 'sanakey.github.io',
-                id: 'Mon Jun 25 2018 16:19:06 GMT+0800',
+                id: 'Sun Jul 01 2018 22:19:51 GMT+0800',
                 owner: 'Sanakey',
                 admin: 'Sanakey',
                 distractionFreeMode: 'true'
@@ -456,15 +482,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/06/26/Github-Pages-Hexo从零开始的免费建站教程/" title="上一篇: Github Pages+Hexo从零开始的免费建站教程">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/06/25/hello-world/" title="下一篇: Hello World">
+            <a href="/2018/06/27/微信小程序入门-二级菜单/" title="下一篇: 微信小程序入门--二级菜单">
                 <i class="fa fa-angle-right"></i>
             </a>
         
