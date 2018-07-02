@@ -93,9 +93,9 @@
     
       <category term="JavaScript" scheme="https://sanakey.github.io/tags/JavaScript/"/>
     
-      <category term="小程序" scheme="https://sanakey.github.io/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
-    
       <category term="Demo" scheme="https://sanakey.github.io/tags/Demo/"/>
+    
+      <category term="小程序" scheme="https://sanakey.github.io/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     
   </entry>
   
@@ -120,9 +120,9 @@
     </summary>
     
     
-      <category term="github" scheme="https://sanakey.github.io/tags/github/"/>
-    
       <category term="hexo" scheme="https://sanakey.github.io/tags/hexo/"/>
+    
+      <category term="github" scheme="https://sanakey.github.io/tags/github/"/>
     
       <category term="博客" scheme="https://sanakey.github.io/tags/%E5%8D%9A%E5%AE%A2/"/>
     
