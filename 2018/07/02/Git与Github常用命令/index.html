@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="#HelloWorld我的第一篇博文">
-<meta name="keywords" content="前端，博客，HTML5，CSS3，JavaScript">
+<meta name="description" content="工作中经常会使用到git命令来进行代码托管于备份，总结了一些常用场景下的命令，在此分享出来。">
+<meta name="keywords" content="github,git">
 <meta property="og:type" content="article">
-<meta property="og:title" content="My First Post">
-<meta property="og:url" content="https://sanakey.github.io/2018/06/25/My-First-Post/index.html">
+<meta property="og:title" content="Git与Github常用命令">
+<meta property="og:url" content="https://sanakey.github.io/2018/07/02/Git与Github常用命令/index.html">
 <meta property="og:site_name" content="Sanakey的小站">
-<meta property="og:description" content="#HelloWorld我的第一篇博文">
+<meta property="og:description" content="工作中经常会使用到git命令来进行代码托管于备份，总结了一些常用场景下的命令，在此分享出来。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-06-25T08:22:32.757Z">
+<meta property="og:updated_time" content="2018-07-02T04:58:49.130Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="My First Post">
-<meta name="twitter:description" content="#HelloWorld我的第一篇博文">
+<meta name="twitter:title" content="Git与Github常用命令">
+<meta name="twitter:description" content="工作中经常会使用到git命令来进行代码托管于备份，总结了一些常用场景下的命令，在此分享出来。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -58,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>My First Post | Sanakey的小站</title>
+<title>Git与Github常用命令 | Sanakey的小站</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -293,11 +293,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-My-First-Post" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Git与Github常用命令" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/06/25/My-First-Post/" class="article-date">
-      <time datetime="2018-06-25T08:19:06.000Z" itemprop="datePublished">2018-06-25</time>
+      <a href="/2018/07/02/Git与Github常用命令/" class="article-date">
+      <time datetime="2018-07-02T03:43:27.000Z" itemprop="datePublished">2018-07-02</time>
 </a>
 
 
@@ -312,7 +312,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      My First Post
+      Git与Github常用命令
     </h1>
   
 
@@ -320,8 +320,16 @@
       
       <div class="article-info article-info-post">
         
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Github/">Github</a>
+    </div>
+
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -329,7 +337,63 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>#HelloWorld<br>我的第一篇博文</p>
+        <p>工作中经常会使用到git命令来进行代码托管于备份，总结了一些常用场景下的命令，在此分享出来。<br><a id="more"></a></p>
+<h2 id="托管自己编写的代码"><a href="#托管自己编写的代码" class="headerlink" title="托管自己编写的代码"></a>托管自己编写的代码</h2><h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git remote add origin git@github.com:my/test.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+<h3 id="步骤说明"><a href="#步骤说明" class="headerlink" title="步骤说明"></a>步骤说明</h3><ol>
+<li><p>首先在GitHub上创建一个仓库，把地址复制下来，如：<code>https://github.com/my/test.git</code></p>
+</li>
+<li><p>打开GitBash，cd到要提交的项目根目录下，输入<code>git init</code>命令初始化仓库，此时在项目文件夹下会出现<code>.git</code>隐藏文件夹</p>
+</li>
+</ol>
+<ol start="3">
+<li><p>使用命令<code>git add .</code>添加所有文件到暂存区。在修改代码之后，可以单独使用<code>git add 文件名</code>（后面是你修改过的文件） 添加指定修改的文件到暂存区</p>
+</li>
+<li><p><code>git commit -m &quot;first commit&quot;</code>，提交代码。<code>&quot;first commit&quot;</code>部分为本次提交的更新说明</p>
+</li>
+<li><p>关联远程仓库：<code>git remote add origin https://github.com/my/test.git</code>（后面是你的仓库地址）</p>
+</li>
+<li><p>我们可以通过命令<code>git status</code>来查看是否还有文件未提交，如果有红色文字出现，说明还有文件未提交。</p>
+</li>
+<li><p><code>git push -u origin master</code> （推送到远程仓库）。</p>
+</li>
+</ol>
+<p>由于远程库是空的，我们第一次推送<code>master</code>分支时，加上了 <code>–u</code>参数，<code>Git</code>不但会把本地的<code>master</code>分支内容推送到远程新的<code>master</code>分支，还会把本地的<code>master</code>分支和远程的<code>master</code>分支关联起来，在以后的推送或者拉取时，只要做了提交就可以使用命令<code>git push origin master</code>进行推送。</p>
+<h3 id="可能出现的错误"><a href="#可能出现的错误" class="headerlink" title="可能出现的错误"></a>可能出现的错误</h3><h4 id="一、错误信息"><a href="#一、错误信息" class="headerlink" title="一、错误信息"></a>一、错误信息</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">my@my MINGW64 /e/gitProjects/text (master)</span><br><span class="line">$ git push origin master</span><br><span class="line">To git@github.com:my/text.git</span><br><span class="line"> ! [rejected]        master -&gt; master (fetch first)</span><br><span class="line">error: failed to push some refs to &apos;git@github.com:my/text.git&apos;</span><br><span class="line">hint: Updates were rejected because the remote contains work that you do</span><br><span class="line">hint: not have locally. This is usually caused by another repository pushing</span><br><span class="line">hint: to the same ref. You may want to first integrate the remote changes</span><br><span class="line">hint: (e.g., &apos;git pull ...&apos;) before pushing again.</span><br><span class="line">hint: See the &apos;Note about fast-forwards&apos; in &apos;git push --help&apos; for details.</span><br></pre></td></tr></table></figure>
+<h4 id="二、问题分析"><a href="#二、问题分析" class="headerlink" title="二、问题分析"></a>二、问题分析</h4><p>出现这种问题的原因一般都是代码仓库存在本地没有的文件。</p>
+<p>到github上查看远程repository，会发现有一个README.md文件（本地代码中没有），而出现错误的原因是github中的README.md文件不在本地代码目录中。</p>
+<p>也就是说我们需要先将远程代码库中的任何文件先pull到本地代码库中，才能push新的代码到github代码库中。</p>
+<h4 id="三、解决问题"><a href="#三、解决问题" class="headerlink" title="三、解决问题"></a>三、解决问题</h4><p>方法一</p>
+<ol>
+<li><p>将远程代码库中的代码pull到本地代码库，并且执行合并merge：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git pull --rebase origin master</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>再次push代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin master</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>我们看到本地代码已经成功的提交到远程代码中，至此问题解决。</p>
+<p>方法二</p>
+<p>在创建仓库时，不要勾选生成README.md文件。</p>
+<p>方法三<br>在创建仓库时，如果勾选生成README.md文件，可以复制项目地址，在想提交的项目根目录下，使用命令<code>git clone git@github.com:my/test.git</code>，然后再进行上述的第三步以及之后的操作。</p>
+<h2 id="修改fork的代码之后提交"><a href="#修改fork的代码之后提交" class="headerlink" title="修改fork的代码之后提交"></a>修改fork的代码之后提交</h2><p>如何在github上面将他人的项目拷贝到自己的本地，修改代码之后重新上传到自己的项目主页，同时通知原项目开发者。</p>
+<ol>
+<li>在任意一个<code>github</code>项目上点击<code>Fork</code>到自己的主页</li>
+<li><p>clone到本地</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone &apos;刚才fork下来后项目的地址&apos;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在刚才<code>clone</code>下来的文件夹内，添加与原始库的关联，命名为<code>upstream</code>，此地址是原项目开发者的项目主页上的<code>clone</code>的地址：这是专门用来与主开发者保持相同进度的方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add upstream &quot;项目原地址&quot;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>从原始库中抓取最新的更新<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch upstream</span><br></pre></td></tr></table></figure></p>
+<ol start="4">
+<li><p>在本地修改完文件测试完成之后，将代码提交到我们自己的<code>fork</code>出来的项目主页。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m &quot;更新说明&quot;</span><br><span class="line">git push &apos;fork出来的地址&apos;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在项目主页代码目录左上方有如图所示的图表，点击绿色的图标，然后就可以比较你的版本和源中代码的差别，然后就可以选择发送一个<code>Pull request</code>给主开发者，添加修改的原因描述。然后就等待主开发者去<code>merge</code>了。</p>
+</li>
+</ol>
+<p>抓取原数据库的更新，我们需要使用是<code>git fetch upstream</code>命令。这命令会自动选择更改过的代码文件进行更新。</p>
 
       
     </div>
@@ -338,13 +402,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/06/25/My-First-Post/">My First Post</a></p>
+        <p><span>本文标题:</span><a href="/2018/07/02/Git与Github常用命令/">Git与Github常用命令</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Sanakey</a></p>
-        <p><span>发布时间:</span>2018-06-25, 16:19:06</p>
-        <p><span>最后更新:</span>2018-06-25, 16:22:32</p>
+        <p><span>发布时间:</span>2018-07-02, 11:43:27</p>
+        <p><span>最后更新:</span>2018-07-02, 12:58:49</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/06/25/My-First-Post/" title="My First Post">https://sanakey.github.io/2018/06/25/My-First-Post/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://sanakey.github.io/2018/06/25/My-First-Post/　　作者: Sanakey" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/07/02/Git与Github常用命令/" title="Git与Github常用命令">https://sanakey.github.io/2018/07/02/Git与Github常用命令/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://sanakey.github.io/2018/07/02/Git与Github常用命令/　　作者: Sanakey" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -356,16 +420,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/06/26/Github-Pages-Hexo从零开始的免费建站教程/">
-                    Github Pages+Hexo从零开始的免费建站教程
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/06/25/hello-world/">
-                    Hello World
+                <a href="/2018/07/01/微信小程序入门-事件/">
+                    微信小程序入门--事件
                 </a>
             </div>
         
@@ -377,7 +435,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#托管自己编写的代码"><span class="toc-number">1.</span> <span class="toc-text">托管自己编写的代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤"><span class="toc-number">1.1.</span> <span class="toc-text">步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤说明"><span class="toc-number">1.2.</span> <span class="toc-text">步骤说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可能出现的错误"><span class="toc-number">1.3.</span> <span class="toc-text">可能出现的错误</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#一、错误信息"><span class="toc-number">1.3.1.</span> <span class="toc-text">一、错误信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#二、问题分析"><span class="toc-number">1.3.2.</span> <span class="toc-text">二、问题分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#三、解决问题"><span class="toc-number">1.3.3.</span> <span class="toc-text">三、解决问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改fork的代码之后提交"><span class="toc-number">2.</span> <span class="toc-text">修改fork的代码之后提交</span></a></li></ol>
         
     </div>
     <style>
@@ -413,7 +471,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"My First Post　| Sanakey的小站　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Git与Github常用命令　| Sanakey的小站　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -437,7 +495,7 @@
                 clientID:  '4d79ef314d7eecff6c86',
                 clientSecret: '69414bfea90934424011146006786eca04c840d9',
                 repo: 'sanakey.github.io',
-                id: 'Mon Jun 25 2018 16:19:06 GMT+0800',
+                id: 'Mon Jul 02 2018 11:43:27 GMT+0800',
                 owner: 'Sanakey',
                 admin: 'Sanakey',
                 distractionFreeMode: 'true'
@@ -456,15 +514,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/06/26/Github-Pages-Hexo从零开始的免费建站教程/" title="上一篇: Github Pages+Hexo从零开始的免费建站教程">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/06/25/hello-world/" title="下一篇: Hello World">
+            <a href="/2018/07/01/微信小程序入门-事件/" title="下一篇: 微信小程序入门--事件">
                 <i class="fa fa-angle-right"></i>
             </a>
         
