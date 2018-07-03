@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="Sanakey" />
+
+
+
+<meta name="description" content="前言用过微信提供的tabBar组件就会发现，局限性不少，样式上的局限性不说，tabBar是写在app.json配置文件中的，这就意味着不能动态改变tabBar的个数，不能在tabBar上面添加函数等等。 加上最近客户有需求，要求tabBar动态改变个数，于是写了一个，分享出来。">
+<meta name="keywords" content="微信小程序,JavaScript,小程序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信小程序--自定义tabBar组件">
+<meta property="og:url" content="https://sanakey.github.io/2018/07/03/微信小程序-自定义tabBar组件/index.html">
+<meta property="og:site_name" content="Sanakey的小站">
+<meta property="og:description" content="前言用过微信提供的tabBar组件就会发现，局限性不少，样式上的局限性不说，tabBar是写在app.json配置文件中的，这就意味着不能动态改变tabBar的个数，不能在tabBar上面添加函数等等。 加上最近客户有需求，要求tabBar动态改变个数，于是写了一个，分享出来。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-07-03T09:12:38.870Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="微信小程序--自定义tabBar组件">
+<meta name="twitter:description" content="前言用过微信提供的tabBar组件就会发现，局限性不少，样式上的局限性不说，tabBar是写在app.json配置文件中的，这就意味着不能动态改变tabBar的个数，不能在tabBar上面添加函数等等。 加上最近客户有需求，要求tabBar动态改变个数，于是写了一个，分享出来。">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Sanakey的小站" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/img/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>微信小程序--自定义tabBar组件 | Sanakey的小站</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.jpg" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Sanakey</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">前端小小白</p>
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:714737083@qq.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" href="https://weibo.com/Sanakey" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/Sanakey" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa 网易云音乐" href="https://music.163.com/#/user/home?id=97522164" title="网易云音乐"></a>
+                            
+                                <a class="fa bilibili" href="https://space.bilibili.com/2016622/#/" title="bilibili"></a>
+                            
+                                <a class="fa Twitter" href="https://twitter.com/xlzx034" title="Twitter"></a>
+                            
+                                <a class="fa QQ" href="/714737083" title="QQ"></a>
+                            
+                                <a class="fa Steam" href="https://steamcommunity.com/id/Sanakey/" title="Steam"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Demo/">Demo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/建站/">建站</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">前端路上的小白</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Sanakey</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.jpg" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Sanakey</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">前端小小白</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:714737083@qq.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="https://weibo.com/Sanakey" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/Sanakey" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa 网易云音乐" target="_blank" href="https://music.163.com/#/user/home?id=97522164" title="网易云音乐"></a>
+                            
+                                <a class="fa bilibili" target="_blank" href="https://space.bilibili.com/2016622/#/" title="bilibili"></a>
+                            
+                                <a class="fa Twitter" target="_blank" href="https://twitter.com/xlzx034" title="Twitter"></a>
+                            
+                                <a class="fa QQ" target="_blank" href="/714737083" title="QQ"></a>
+                            
+                                <a class="fa Steam" target="_blank" href="https://steamcommunity.com/id/Sanakey/" title="Steam"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-微信小程序-自定义tabBar组件" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/07/03/微信小程序-自定义tabBar组件/" class="article-date">
+      <time datetime="2018-07-03T08:01:12.000Z" itemprop="datePublished">2018-07-03</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      微信小程序--自定义tabBar组件
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/微信小程序/">微信小程序</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小程序/">小程序</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信小程序/">微信小程序</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>用过微信提供的tabBar组件就会发现，局限性不少，样式上的局限性不说，tabBar是写在app.json配置文件中的，这就意味着不能动态改变tabBar的个数，不能在tabBar上面添加函数等等。</p>
+<p>加上最近客户有需求，要求tabBar动态改变个数，于是写了一个，分享出来。</p>
+<a id="more"></a>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="wxml"><a href="#wxml" class="headerlink" title="wxml"></a>wxml</h3><p>wxml模板<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">name</span>=<span class="string">"tabBar"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"tabBar"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">block</span> <span class="attr">wx:for</span>=<span class="string">"&#123;&#123;tabBar&#125;&#125;"</span> <span class="attr">wx:for-item</span>=<span class="string">"item"</span> <span class="attr">wx:key</span>=<span class="string">"tabBar"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"tabBar-item"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">view</span> <span class="attr">bindtap</span>=<span class="string">"goTab"</span> <span class="attr">data-path</span>=<span class="string">"&#123;&#123;item.pagePath&#125;&#125;"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">view</span>&gt;</span><span class="tag">&lt;<span class="name">image</span> <span class="attr">class</span>=<span class="string">"icon"</span> <span class="attr">src</span>=<span class="string">'&#123;&#123;item.iconPath&#125;&#125;'</span>&gt;</span><span class="tag">&lt;/<span class="name">image</span>&gt;</span><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"&#123;&#123;item.active== true ? 'tabBartext' :''&#125;&#125;"</span>&gt;</span>&#123;&#123;item.text&#125;&#125;<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">block</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="wxss"><a href="#wxss" class="headerlink" title="wxss"></a>wxss</h3><p>wxss模板<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.icon</span>&#123;</span><br><span class="line">  <span class="attribute">width</span>:<span class="number">54</span>rpx;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">54</span>rpx;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.tabBar</span>&#123;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">90</span>rpx;</span><br><span class="line">  <span class="attribute">width</span>:<span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">position</span>: fixed;</span><br><span class="line">  <span class="attribute">bottom</span>:<span class="number">0</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">padding</span>:<span class="number">10</span>rpx;</span><br><span class="line">  <span class="attribute">background</span>:<span class="number">#F7F7FA</span>;</span><br><span class="line">  <span class="attribute">font-size</span>:<span class="number">20</span>rpx;</span><br><span class="line">  <span class="attribute">color</span>:<span class="number">#8A8A8A</span>;</span><br><span class="line">  <span class="attribute">box-shadow</span>: <span class="number">6</span>rpx <span class="number">6</span>rpx <span class="number">6</span>rpx <span class="number">6</span>rpx <span class="number">#aaa</span>;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">flex-direction</span>: row;</span><br><span class="line">  <span class="attribute">justify-content</span>: space-around;</span><br><span class="line">  <span class="attribute">align-items</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"> <span class="selector-class">.tabBar-item</span>&#123;</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">  <span class="attribute">overflow</span>: hidden;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">120</span>rpx;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.tabBartext</span>&#123;</span><br><span class="line">  <span class="attribute">color</span>:<span class="number">#1296DB</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="tabbar数据"><a href="#tabbar数据" class="headerlink" title="tabbar数据"></a>tabbar数据</h3><p>tabbar的数据采用仿照官方原生tabbar配置文件的写法，可以通过后台更改值实现tabbar个数的动态变化。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">var tabbarData = [</span><br><span class="line">  &#123;</span><br><span class="line">    &quot;active&quot;: false,</span><br><span class="line">    &quot;id&quot;:0,</span><br><span class="line">    &quot;pagePath&quot;: &quot;/pages/index/index&quot;,</span><br><span class="line">    &quot;iconPath&quot;: &quot;/imgs/icon/index.png&quot;,</span><br><span class="line">    &quot;selectedIconPath&quot;: &quot;/imgs/icon/index-s.png&quot;,</span><br><span class="line">    &quot;text&quot;: &quot;首页&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    &quot;active&quot;: false,</span><br><span class="line">    &quot;id&quot;: 1,</span><br><span class="line">    &quot;pagePath&quot;: &quot;/pages/classify/classify&quot;,</span><br><span class="line">    &quot;iconPath&quot;: &quot;/imgs/icon/classify.png&quot;,</span><br><span class="line">    &quot;selectedIconPath&quot;: &quot;/imgs/icon/classify-s.png&quot;,</span><br><span class="line">    &quot;text&quot;: &quot;分类&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    &quot;active&quot;: false,</span><br><span class="line">    &quot;id&quot;: 2,</span><br><span class="line">    &quot;pagePath&quot;: &quot;/pages/cart/cart&quot;,</span><br><span class="line">    &quot;iconPath&quot;: &quot;/imgs/icon/cart.png&quot;,</span><br><span class="line">    &quot;selectedIconPath&quot;: &quot;/imgs/icon/cart-s.png&quot;,</span><br><span class="line">    &quot;text&quot;: &quot;购物车&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    &quot;active&quot;: false,</span><br><span class="line">    &quot;id&quot;: 3,</span><br><span class="line">    &quot;pagePath&quot;: &quot;/pages/store/store&quot;,</span><br><span class="line">    &quot;iconPath&quot;: &quot;/imgs/icon/store.png&quot;,</span><br><span class="line">    &quot;selectedIconPath&quot;: &quot;/imgs/icon/store-s.png&quot;,</span><br><span class="line">    &quot;text&quot;: &quot;门店&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    &quot;active&quot;: false,</span><br><span class="line">    &quot;id&quot;: 4,</span><br><span class="line">    &quot;pagePath&quot;: &quot;/pages/user/user&quot;,</span><br><span class="line">    &quot;iconPath&quot;: &quot;/imgs/icon/user.png&quot;,</span><br><span class="line">    &quot;selectedIconPath&quot;: &quot;/imgs/icon/user-s.png&quot;,</span><br><span class="line">    &quot;text&quot;: &quot;我的&quot;</span><br><span class="line">  &#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure></p>
+<h3 id="js"><a href="#js" class="headerlink" title="js"></a>js</h3><p>首先是公用方法，在utils.js文件里添加下面的方法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//tabbar的样式切换</span></span><br><span class="line"><span class="comment">//id 当前页面在tabBar数组中的下标</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">tabbar</span>(<span class="params">bindName, id, target, tabbarData</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> that = target;</span><br><span class="line">  <span class="keyword">var</span> bindData = &#123;&#125;;</span><br><span class="line">  <span class="keyword">var</span> newTabbar = tabbarData;</span><br><span class="line">  newTabbar[id][<span class="string">'iconPath'</span>] = newTabbar[id][<span class="string">'selectedIconPath'</span>]</span><br><span class="line">  newTabbar[id][<span class="string">'active'</span>] = <span class="literal">true</span>;</span><br><span class="line">  bindData[bindName] = newTabbar</span><br><span class="line">  that.setData(&#123; bindData &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// tab跳转</span></span><br><span class="line"><span class="comment">//id 当前页面在tabBar数组中的下标</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">goTab</span>(<span class="params">e, that, id</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> path = e.currentTarget.dataset.path;</span><br><span class="line">  <span class="comment">// 防止重复点击跳转</span></span><br><span class="line">  <span class="keyword">if</span> (path === that.data.bindData.tabBar[id].pagePath) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  wx.reLaunch(&#123;</span><br><span class="line">    url: path,</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//导出方法</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  tabbar: tabbar,</span><br><span class="line">  goTab: goTab,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>在要使用tabbar的页面wxml里引入以下代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import src=&quot;../template/tabbar/tabbar-template.wxml&quot; /&gt;</span><br><span class="line">&lt;template is=&quot;tabBar&quot; data=&quot;&#123;&#123;tabBar:bindData.tabBar&#125;&#125;&quot;/&gt;</span><br></pre></td></tr></table></figure></p>
+<p>wxss里面引入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@import &quot;../template/tabbar/tabbar-template.wxss&quot; ;</span><br></pre></td></tr></table></figure></p>
+<p>在要使用tabbar的页面引入utils方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var utils = require(&quot;../../utils/util.js&quot;);</span><br></pre></td></tr></table></figure></p>
+<p>首页的js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> utils = <span class="built_in">require</span>(<span class="string">"../../utils/util.js"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> utils = <span class="built_in">require</span>(<span class="string">"../../utils/util.js"</span>);</span><br><span class="line"></span><br><span class="line">Page(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line"></span><br><span class="line">   &#125;,</span><br><span class="line"></span><br><span class="line">onLoad: <span class="function"><span class="keyword">function</span> (<span class="params">options</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> tabbarData = <span class="string">"后台请求获取到上面的tabbar数据"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 查询包含首页字符的页面id</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">checkData</span>(<span class="params">item</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> item.text == <span class="string">"首页"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> tabbarId = tabbarData.find(checkData).id;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.setData(&#123;</span><br><span class="line">      tabbarId: tabbarId</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 调用utils.tabbar方法，切换tabbar的样式。</span></span><br><span class="line">    utils.tabbar(<span class="string">"tabBar"</span>, that.data.tabbarId, that, tabbarData);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//引用的数组因为切换样式时数据被修改，保存到本地存储时是被修改状态</span></span><br><span class="line">    <span class="comment">//我们需要的是数据从后台传来时的初始状态，进行下列还原操作</span></span><br><span class="line">    <span class="comment">//也可以对数组进行深度拷贝，对拷贝的数组进行存储操作</span></span><br><span class="line">    tabbarData[<span class="number">0</span>].active = <span class="literal">false</span>;</span><br><span class="line">    tabbarData[<span class="number">0</span>].iconPath = <span class="string">"/imgs/icon/index.png"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//避免每次加载tabbar页面都发送请求，首页加载成功后保存在本地存储。</span></span><br><span class="line">    wx.setStorageSync(<span class="string">"tabbarData"</span>, tabbarData);</span><br><span class="line"></span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Tabbar跳转</span></span><br><span class="line">  goTab:<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    utils.goTab(e, <span class="keyword">this</span>, <span class="keyword">this</span>.data.tabbarId)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>其他要显示tabbar页面的js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> utils = <span class="built_in">require</span>(<span class="string">"../../utils/util.js"</span>);</span><br><span class="line"></span><br><span class="line">Page(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line"></span><br><span class="line">   &#125;,</span><br><span class="line"></span><br><span class="line">  onLoad: <span class="function"><span class="keyword">function</span> (<span class="params">options</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 获取tabbar数组的初始状态</span></span><br><span class="line">      <span class="keyword">var</span> tabbarData = wx.getStorageSync(<span class="string">"tabbarData"</span>);</span><br><span class="line">      <span class="function"><span class="keyword">function</span> <span class="title">checkData</span>(<span class="params">item</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> item.text == <span class="string">"分类"</span>;</span><br><span class="line">        <span class="comment">//其他页面赋值右边的字符串输入对应的页面描述，如"购物车"，"我的"</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">var</span> tabbarId = tabbarData.find(checkData).id;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">this</span>.setData(&#123;</span><br><span class="line">        tabbarId: tabbarId</span><br><span class="line">      &#125;)</span><br><span class="line"></span><br><span class="line">      utils.tabbar(<span class="string">"tabBar"</span>, <span class="keyword">this</span>.data.tabbarId, <span class="keyword">this</span>, tabbarData);</span><br><span class="line"></span><br><span class="line">  &#125;,</span><br><span class="line">    <span class="comment">// Tabbar跳转</span></span><br><span class="line">    goTab:<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">      utils.goTab(e, <span class="keyword">this</span>, <span class="keyword">this</span>.data.tabbarId)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>这样效果就实现了，后台改变传递过来的参数，tabbar的数量可以动态改变。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2018/07/03/微信小程序-自定义tabBar组件/">微信小程序--自定义tabBar组件</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Sanakey</a></p>
+        <p><span>发布时间:</span>2018-07-03, 16:01:12</p>
+        <p><span>最后更新:</span>2018-07-03, 17:12:38</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/07/03/微信小程序-自定义tabBar组件/" title="微信小程序--自定义tabBar组件">https://sanakey.github.io/2018/07/03/微信小程序-自定义tabBar组件/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://sanakey.github.io/2018/07/03/微信小程序-自定义tabBar组件/　　作者: Sanakey" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2018/07/02/Git与Github常用命令/">
+                    Git与Github常用命令
+                </a>
+            </div>
+        
+    </nav>
+
+  
+  
+    
+<div style="padding: 0; margin: 20px auto; width: 90%; text-align: center;">
+    <br>
+    <div>感谢打赏，您的支持将鼓励我继续创作！</div>
+    <br>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+        <div class="btn btn-pay">打赏</div>
+    </button>
+    <br>
+    <br>
+    <div id="QR" style="display: none;">
+        
+        <div id="wechat" style="display: inline-block;">
+            <img id="wechat_qr" src="/img/233.gif" alt="Sanakey WeChat Pay"/>
+            <p>微信打赏</p>
+        </div>
+        
+        
+        <div id="alipay" style="display: inline-block">
+            <img id="alipay_qr" src="/img/333.gif" alt="Sanakey Alipay"/>
+            <p>支付宝打赏</p>
+        </div>
+        
+        <br>
+        <br>
+    </div>
+</div>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码"><span class="toc-number">2.</span> <span class="toc-text">代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#wxml"><span class="toc-number">2.1.</span> <span class="toc-text">wxml</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#wxss"><span class="toc-number">2.2.</span> <span class="toc-text">wxss</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tabbar数据"><span class="toc-number">2.3.</span> <span class="toc-text">tabbar数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#js"><span class="toc-number">2.4.</span> <span class="toc-text">js</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用"><span class="toc-number">3.</span> <span class="toc-text">使用</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"微信小程序--自定义tabBar组件　| Sanakey的小站　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+        <section class="gitalk" id="comments">
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"></link>
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <div id="gitalk-container"></div>
+    <script>
+        var loadComment = function() {
+            var gitalk = new Gitalk({
+                clientID:  '4d79ef314d7eecff6c86',
+                clientSecret: '69414bfea90934424011146006786eca04c840d9',
+                repo: 'sanakey.github.io',
+                id: 'Tue Jul 03 2018 16:01:12 GMT+0800',
+                owner: 'Sanakey',
+                admin: 'Sanakey',
+                distractionFreeMode: 'true'
+            })
+            gitalk.render('gitalk-container')
+        }
+    </script>
+    
+    <script> loadComment(); </script>
+
+</section>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2018/07/02/Git与Github常用命令/" title="下一篇: Git与Github常用命令">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/07/03/微信小程序-自定义tabBar组件/">微信小程序--自定义tabBar组件</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/02/Git与Github常用命令/">Git与Github常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/01/微信小程序入门-事件/">微信小程序入门--事件</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/27/微信小程序入门-二级菜单/">微信小程序入门--二级菜单</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/26/Github-Pages-Hexo从零开始的免费建站教程/">Github Pages+Hexo从零开始的免费建站教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/25/My-First-Post/">My First Post</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/25/hello-world/">Hello World</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2018 Sanakey
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 10;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618},"display":{"superSample":2,"width":60,"height":120,"position":"right","hOffset":50,"vOffset":35},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2}});</script></body>
+</html>
