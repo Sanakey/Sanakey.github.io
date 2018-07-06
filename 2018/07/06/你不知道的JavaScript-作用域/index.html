@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="Sanakey的小站">
 <meta property="og:description" content="前言最近在看&amp;lt;&amp;lt;你不知道的JavaScript&amp;gt;&amp;gt;系列书籍，这套书在Github上是star数超过8W的开源书籍。 久仰大名，前不久趁着618打折，买了一整套。目前读了一下上册，重点正是JS的几个主要难点之一：作用域与闭包，this、原型与原型链。 作者循序渐进，由浅入深讨论了让人困惑的这些难题，加上幽默的讲解方式并不会让人感到无聊。 我整理了一下自己看书时的笔记，方便复习">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-07-06T14:02:21.499Z">
+<meta property="og:updated_time" content="2018-07-06T14:43:24.504Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="你不知道的JavaScript--作用域">
 <meta name="twitter:description" content="前言最近在看&amp;lt;&amp;lt;你不知道的JavaScript&amp;gt;&amp;gt;系列书籍，这套书在Github上是star数超过8W的开源书籍。 久仰大名，前不久趁着618打折，买了一整套。目前读了一下上册，重点正是JS的几个主要难点之一：作用域与闭包，this、原型与原型链。 作者循序渐进，由浅入深讨论了让人困惑的这些难题，加上幽默的讲解方式并不会让人感到无聊。 我整理了一下自己看书时的笔记，方便复习">
@@ -344,9 +344,9 @@
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近在看&lt;&lt;<strong>你不知道的JavaScript</strong>&gt;&gt;系列书籍，这套书在<code>Github</code>上是<code>star</code>数超过8W的开源书籍。</p>
 <p>久仰大名，前不久趁着618打折，买了一整套。目前读了一下上册，重点正是<code>JS</code>的几个主要难点之一：作用域与闭包，<code>this</code>、原型与原型链。</p>
 <p>作者循序渐进，由浅入深讨论了让人困惑的这些难题，加上幽默的讲解方式并不会让人感到无聊。</p>
-<p>我整理了一下自己看书时的笔记，方便复习查阅。本篇为作用域部分，本人认为，带着问题看书，更容易提炼出精华，所以本文主要以问答的方式进行。<br><a id="more"></a></p>
+<p>我整理了一下自己看书时的笔记，方便复习查阅。本篇为作用域部分，我认为，带着问题看书，更容易提炼出精华，所以本文主要以问答的方式进行。<br><a id="more"></a></p>
 <h2 id="什么是作用域"><a href="#什么是作用域" class="headerlink" title="什么是作用域"></a>什么是作用域</h2><h3 id="作用域是什么"><a href="#作用域是什么" class="headerlink" title="作用域是什么"></a>作用域是什么</h3><blockquote>
-<p>作用域是一套规则，用于确定在何处以及如何查找变量（标识符）。如果查找的目的是对<br>变量进行赋值，那么就会使用 <code>LHS</code> 查询；如果目的是获取变量的值，就会使用 <code>RHS</code> 查询。<br>赋值操作符会导致 <code>LHS</code> 查询。 ＝操作符或调用函数时传入参数的操作都会导致关联作用域<br>的赋值操作。</p>
+<p>作用域是一套规则，用于确定在何处以及如何查找变量（标识符）。如果查找的目的是对变量进行赋值，那么就会使用 <code>LHS</code>查询；如果目的是获取变量的值，就会使用 <code>RHS</code> 查询。赋值操作符会导致 <code>LHS</code> 查询。 <code>＝</code> 操作符或调用函数时传入参数的操作都会导致关联作用域的赋值操作。</p>
 </blockquote>
 <blockquote>
 <p><code>LHS</code> 和 <code>RHS</code> 的含义是“赋值操作的左侧或右侧”并不一定意味着就是“=赋值操作符的左侧或右侧”。赋值操作还有其他几种形式，因此在概念上最好将其理解为“赋值操作的目标是谁（<code>LHS</code>）”以及“谁是赋值操作的源头（<code>RHS</code>）”。</p>
@@ -439,7 +439,7 @@
 </blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="literal">undefined</span>(); <span class="comment">// 执行一个非法操作来强制制造一个异常</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">catch</span> (err) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log( err ); <span class="comment">// 能够正常执行！</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log( err ); <span class="comment">// ReferenceError: err not found</span></span><br></pre></td></tr></table></figure>
 <h4 id="let"><a href="#let" class="headerlink" title="let"></a>let</h4><blockquote>
-<p><code>let</code> 关键字可以将变量绑定到所在的任意作用域中（通常是 <code>{...}</code> 内部）。换句话说，<code>let</code><br>为其声明的变量隐式地了所在的块作用域。</p>
+<p><code>let</code> 关键字可以将变量绑定到所在的任意作用域中（通常是 <code>{...}</code> 内部）。换句话说，<code>let</code>为其声明的变量隐式地了所在的块作用域。</p>
 </blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">if</span> (foo) &#123;</span><br><span class="line">    <span class="keyword">let</span> bar = foo * <span class="number">2</span>;</span><br><span class="line">    bar = something( bar );</span><br><span class="line">    <span class="built_in">console</span>.log( bar );</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log( bar ); <span class="comment">// ReferenceError</span></span><br></pre></td></tr></table></figure>
 <blockquote>
@@ -460,12 +460,12 @@
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;<span class="number">10</span>; i++) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log( i );</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log( i ); <span class="comment">// ReferenceError</span></span><br></pre></td></tr></table></figure>
 <blockquote>
-<p><code>for</code> 循环头部的 <code>let</code> 不仅将 <code>i</code> 绑定到了<code>for</code>循环的块中，事实上它将其重新绑定到了循环<br>的每一个迭代中，确保使用上一个循环迭代结束时的值重新进行赋值。</p>
+<p><code>for</code> 循环头部的 <code>let</code> 不仅将 <code>i</code> 绑定到了<code>for</code>循环的块中，事实上它将其重新绑定到了循环的每一个迭代中，确保使用上一个循环迭代结束时的值重新进行赋值。</p>
 </blockquote>
 <p>等价于</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="keyword">let</span> j;</span><br><span class="line">    <span class="keyword">for</span> (j=<span class="number">0</span>; j&lt;<span class="number">10</span>; j++) &#123;</span><br><span class="line">    <span class="keyword">let</span> i = j; <span class="comment">// 每个迭代重新绑定！</span></span><br><span class="line">        <span class="built_in">console</span>.log( i );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="变量提升"><a href="#变量提升" class="headerlink" title="变量提升"></a>变量提升</h2><h3 id="什么是变量提升"><a href="#什么是变量提升" class="headerlink" title="什么是变量提升"></a>什么是变量提升</h3><blockquote>
-<p>我们习惯将 <code>var a = 2;</code> 看作一个声明，而实际上 <code>JavaScript</code> 引擎并不这么认为。它将 <code>var a</code>和 <code>a = 2</code> 当作两个单独的声明，第一个是编译阶段的任务，而第二个则是执行阶段的任务。</p>
+<p>我们习惯将 <code>var a = 2;</code> 看作一个声明，而实际上 <code>JavaScript</code> 引擎并不这么认为。它将 <code>var a</code>和 <code>a = 2</code>当作两个单独的声明，第一个是编译阶段的任务，而第二个则是执行阶段的任务。</p>
 </blockquote>
 <blockquote>
 <p>这意味着无论作用域中的声明出现在什么地方，都将在代码本身被执行前首先进行处理。可以将这个过程形象地想象成所有的声明（变量和函数）都会被“移动”到各自作用域的最顶端，这个过程被称为提升。</p>
@@ -493,7 +493,7 @@
 <li>动态作用域与词法作用域的区别</li>
 </ul>
 <blockquote>
-<p>主要区别：词法作用域是在写代码或者说定义时确定的，而动态作用域是在运行时确定<br>的。（ this 也是！）词法作用域关注函数在何处声明，而动态作用域关注函数从何处调用。</p>
+<p>主要区别：词法作用域是在写代码或者说定义时确定的，而动态作用域是在运行时确定的。（ <code>this</code> 也是！）词法作用域关注函数在何处声明，而动态作用域关注函数从何处调用。</p>
 </blockquote>
 
       
@@ -506,7 +506,7 @@
         <p><span>本文标题:</span><a href="/2018/07/06/你不知道的JavaScript-作用域/">你不知道的JavaScript--作用域</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Sanakey</a></p>
         <p><span>发布时间:</span>2018-07-06, 15:44:38</p>
-        <p><span>最后更新:</span>2018-07-06, 22:02:21</p>
+        <p><span>最后更新:</span>2018-07-06, 22:43:24</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/07/06/你不知道的JavaScript-作用域/" title="你不知道的JavaScript--作用域">https://sanakey.github.io/2018/07/06/你不知道的JavaScript-作用域/</a>
             <span class="copy-path" data-clipboard-text="原文: https://sanakey.github.io/2018/07/06/你不知道的JavaScript-作用域/　　作者: Sanakey" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
