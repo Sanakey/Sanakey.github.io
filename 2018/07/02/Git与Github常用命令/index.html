@@ -24,7 +24,7 @@
 <meta property="og:description" content="工作中经常会使用到git命令来进行代码版本管理，总结了一些常用场景下的命令，在此分享出来。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://s1.ax2x.com/2018/07/02/nkjYB.png">
-<meta property="og:updated_time" content="2018-07-08T03:25:49.047Z">
+<meta property="og:updated_time" content="2018-07-08T14:49:26.560Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git与Github常用命令">
 <meta name="twitter:description" content="工作中经常会使用到git命令来进行代码版本管理，总结了一些常用场景下的命令，在此分享出来。">
@@ -210,7 +210,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Demo/">Demo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/作用域/">作用域</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/建站/">建站</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Demo/">Demo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/作用域/">作用域</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/建站/">建站</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/闭包/">闭包</a></li></ul>
                     </div>
                 </section>
                 
@@ -401,9 +401,35 @@
 </li>
 </ol>
 <p><img src="https://s1.ax2x.com/2018/07/02/nkjYB.png" alt="image"></p>
+<h2 id="多人协作"><a href="#多人协作" class="headerlink" title="多人协作"></a>多人协作</h2><h3 id="步骤-2"><a href="#步骤-2" class="headerlink" title="步骤"></a>步骤</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">git clone 项目地址</span><br><span class="line">git checkout -b 分支名</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;更新说明&quot;</span><br><span class="line">git push origin 分支名</span><br><span class="line">git checkout master</span><br><span class="line">git pull origin master</span><br><span class="line">git merge 分支名</span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+<h3 id="步骤说明-2"><a href="#步骤说明-2" class="headerlink" title="步骤说明"></a>步骤说明</h3><ol>
+<li><p>首先<code>clone</code>代码到本地仓库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone &apos;项目地址&apos;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果分支存在则只切换分支，若不存在则创建并切换到指定分支，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b 分支名</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>如果只是查看分支，可以使用<code>git branch</code>命令，不需带任何参数。</p>
+<ol start="3">
+<li><p>提交对新分支的更改到远程仓库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m &quot;更新说明&quot;</span><br><span class="line">git push origin 分支名</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用<code>git checkout master</code>切回到<code>master</code>分支</p>
+</li>
+<li>如果<code>master</code>分支有修改，使用<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>更新远程仓库的修改到本地仓库</p>
+<ol start="6">
+<li>合并分支到<code>master</code>，并提交到远程仓库<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git merge 分支名</span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><p>可能会用到的命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">git branch       //不带参数：列出本地已经存在的分支，并且在当前分支的前面用&quot;*&quot;标记</span><br><span class="line">git branch -r    //查看远程版本库分支列表</span><br><span class="line">git branch -a    //查看所有分支列表，包括本地和远程</span><br><span class="line">git branch dev   //创建名为dev的分支，创建分支时需要是最新的环境，创建分支但依然停留在当前分支</span><br><span class="line">git branch -d dev  //删除dev分支，如果在分支中有一些未merge的提交，那么会删除分支失败</span><br><span class="line">git branch -D dev  //强制删除dev分支</span><br><span class="line">git branch -m oldName newName   //给分支重命名</span><br><span class="line"></span><br><span class="line">git checkout 文件名    //放弃单个文件的修改</span><br><span class="line">git checkout .    //放弃当前目录下的修改</span><br></pre></td></tr></table></figure></p>
 <h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><p><a href="https://git-scm.com/book/zh/v1/Git-%E5%9F%BA%E7%A1%80-%E6%92%A4%E6%B6%88%E6%93%8D%E4%BD%9C" target="_blank" rel="noopener">Git 基础 - 撤消操作</a></p>
 <p><a href="http://www.runoob.com/linux/linux-vim.html" target="_blank" rel="noopener">vim 基础操作</a></p>
 <p><a href="http://www.runoob.com/git/git-tutorial.html" target="_blank" rel="noopener">Git 教程</a></p>
+<p><a href="https://learngitbranching.js.org" target="_blank" rel="noopener">Learn Git Branching</a></p>
 
       
     </div>
@@ -415,7 +441,7 @@
         <p><span>本文标题:</span><a href="/2018/07/02/Git与Github常用命令/">Git与Github常用命令</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Sanakey</a></p>
         <p><span>发布时间:</span>2018-07-02, 11:43:27</p>
-        <p><span>最后更新:</span>2018-07-08, 11:25:49</p>
+        <p><span>最后更新:</span>2018-07-08, 22:49:26</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/07/02/Git与Github常用命令/" title="Git与Github常用命令">https://sanakey.github.io/2018/07/02/Git与Github常用命令/</a>
             <span class="copy-path" data-clipboard-text="原文: https://sanakey.github.io/2018/07/02/Git与Github常用命令/　　作者: Sanakey" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -481,7 +507,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#托管自己编写的代码"><span class="toc-number">1.</span> <span class="toc-text">托管自己编写的代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤"><span class="toc-number">1.1.</span> <span class="toc-text">步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤说明"><span class="toc-number">1.2.</span> <span class="toc-text">步骤说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可能出现的错误"><span class="toc-number">1.3.</span> <span class="toc-text">可能出现的错误</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#一、错误信息"><span class="toc-number">1.3.1.</span> <span class="toc-text">一、错误信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#二、问题分析"><span class="toc-number">1.3.2.</span> <span class="toc-text">二、问题分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#三、解决问题"><span class="toc-number">1.3.3.</span> <span class="toc-text">三、解决问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改fork的代码之后提交"><span class="toc-number">2.</span> <span class="toc-text">修改fork的代码之后提交</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤-1"><span class="toc-number">2.1.</span> <span class="toc-text">步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤说明-1"><span class="toc-number">2.2.</span> <span class="toc-text">步骤说明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#附录"><span class="toc-number">3.</span> <span class="toc-text">附录</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#托管自己编写的代码"><span class="toc-number">1.</span> <span class="toc-text">托管自己编写的代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤"><span class="toc-number">1.1.</span> <span class="toc-text">步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤说明"><span class="toc-number">1.2.</span> <span class="toc-text">步骤说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可能出现的错误"><span class="toc-number">1.3.</span> <span class="toc-text">可能出现的错误</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#一、错误信息"><span class="toc-number">1.3.1.</span> <span class="toc-text">一、错误信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#二、问题分析"><span class="toc-number">1.3.2.</span> <span class="toc-text">二、问题分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#三、解决问题"><span class="toc-number">1.3.3.</span> <span class="toc-text">三、解决问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改fork的代码之后提交"><span class="toc-number">2.</span> <span class="toc-text">修改fork的代码之后提交</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤-1"><span class="toc-number">2.1.</span> <span class="toc-text">步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤说明-1"><span class="toc-number">2.2.</span> <span class="toc-text">步骤说明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多人协作"><span class="toc-number">3.</span> <span class="toc-text">多人协作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤-2"><span class="toc-number">3.1.</span> <span class="toc-text">步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤说明-2"><span class="toc-number">3.2.</span> <span class="toc-text">步骤说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#补充"><span class="toc-number">3.3.</span> <span class="toc-text">补充</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#附录"><span class="toc-number">4.</span> <span class="toc-text">附录</span></a></li></ol>
         
     </div>
     <style>
@@ -574,7 +600,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/07/06/你不知道的JavaScript-作用域/">你不知道的JavaScript--作用域</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/03/微信小程序-自定义tabBar组件/">微信小程序--自定义tabBar组件</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/02/Git与Github常用命令/">Git与Github常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/01/微信小程序入门-事件/">微信小程序入门--事件</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/27/微信小程序入门-二级菜单/">微信小程序入门--二级菜单</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/26/Github-Pages-Hexo从零开始的免费建站教程/">Github Pages+Hexo从零开始的免费建站教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/25/My-First-Post/">My First Post</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/25/hello-world/">Hello World</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/07/08/你不知道的JavaScript-闭包/">你不知道的JavaScript--闭包</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/06/你不知道的JavaScript-作用域/">你不知道的JavaScript--作用域</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/03/微信小程序-自定义tabBar组件/">微信小程序--自定义tabBar组件</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/02/Git与Github常用命令/">Git与Github常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/01/微信小程序入门-事件/">微信小程序入门--事件</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/27/微信小程序入门-二级菜单/">微信小程序入门--二级菜单</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/26/Github-Pages-Hexo从零开始的免费建站教程/">Github Pages+Hexo从零开始的免费建站教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/25/My-First-Post/">My First Post</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/25/hello-world/">Hello World</a></li></ul>
 
 
 

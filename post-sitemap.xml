@@ -7,8 +7,8 @@
     </url>
 
     <url>
-        <loc>https://sanakey.github.io/2018/07/06/%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84JavaScript-%E4%BD%9C%E7%94%A8%E5%9F%9F/</loc>
-        <lastmod>2018-07-08T10:34:49.520Z</lastmod>
+        <loc>https://sanakey.github.io/2018/07/08/%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84JavaScript-%E9%97%AD%E5%8C%85/</loc>
+        <lastmod>2018-07-08T14:54:01.515Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -16,7 +16,15 @@
 
     <url>
         <loc>https://sanakey.github.io/2018/07/02/Git%E4%B8%8EGithub%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</loc>
-        <lastmod>2018-07-08T03:25:49.047Z</lastmod>
+        <lastmod>2018-07-08T14:49:26.560Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://sanakey.github.io/2018/07/06/%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84JavaScript-%E4%BD%9C%E7%94%A8%E5%9F%9F/</loc>
+        <lastmod>2018-07-08T10:34:49.520Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
