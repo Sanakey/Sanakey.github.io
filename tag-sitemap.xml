@@ -23,20 +23,6 @@
     </url>
 
     <url>
-        <loc>https://sanakey.github.io/tags/github/</loc>
-        <lastmod>2018-07-03T06:52:49.320Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://sanakey.github.io/tags/git/</loc>
-        <lastmod>2018-07-03T06:52:49.320Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://sanakey.github.io/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/</loc>
         <lastmod>2018-07-03T09:28:36.384Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -44,14 +30,14 @@
     </url>
 
     <url>
-        <loc>https://sanakey.github.io/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/</loc>
+        <loc>https://sanakey.github.io/tags/Demo/</loc>
         <lastmod>2018-07-03T09:28:36.384Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://sanakey.github.io/tags/Demo/</loc>
+        <loc>https://sanakey.github.io/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/</loc>
         <lastmod>2018-07-03T09:28:36.384Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -74,6 +60,20 @@
     <url>
         <loc>https://sanakey.github.io/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F/</loc>
         <lastmod>2018-07-07T13:34:11.311Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://sanakey.github.io/tags/github/</loc>
+        <lastmod>2018-07-08T03:23:00.423Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://sanakey.github.io/tags/git/</loc>
+        <lastmod>2018-07-08T03:23:00.423Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
