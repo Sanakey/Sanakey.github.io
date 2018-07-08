@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="Sanakey的小站">
 <meta property="og:description" content="前言继续上次的&amp;lt;你不知道的JavaScript&amp;gt;读书笔记，这次是闭包部分。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-07-08T14:59:30.627Z">
+<meta property="og:updated_time" content="2018-07-08T15:01:11.418Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="你不知道的JavaScript--闭包">
 <meta name="twitter:description" content="前言继续上次的&amp;lt;你不知道的JavaScript&amp;gt;读书笔记，这次是闭包部分。">
@@ -369,7 +369,7 @@
 <p>本质上无论何时何地，如果将函数（访问它们各自的词法作用域）当作第一级的值类型并到处传递，你就会看到闭包在这些函数中的应用。在定时器、事件监听器、<code>Ajax</code>请求、跨窗口通信、<code>WebWorkers</code>或者任何其他的异步（或者同步）任务中，只要使用了回调函数，实际上就是在使用闭包！</p>
 </blockquote>
 <p><strong>闭包无处不在！</strong></p>
-<h3 id="循环和闭包"><a href="#循环和闭包" class="headerlink" title="循环和闭包"></a>循环和闭包</h3><p>要说明闭包， for 循环是最常见的例子。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">1</span>;i &lt;= <span class="number">5</span>;i++)&#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span> <span class="title">timer</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(i);</span><br><span class="line">    &#125;,i*<span class="number">1000</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="循环和闭包"><a href="#循环和闭包" class="headerlink" title="循环和闭包"></a>循环和闭包</h3><p>要说明闭包， <code>for</code> 循环是最常见的例子。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">1</span>;i &lt;= <span class="number">5</span>;i++)&#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span> <span class="title">timer</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(i);</span><br><span class="line">    &#125;,i*<span class="number">1000</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <ul>
 <li>正常情况下，我们对这段代码行为的预期是分别输出数字 1~5，每秒一次，每次一个。</li>
 </ul>
@@ -409,14 +409,10 @@
 <h3 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h3><p>如何展现闭包的强大威力？</p>
 <p><strong>模块。</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">CoolModule</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> something = <span class="string">'cool'</span>;</span><br><span class="line">    <span class="keyword">var</span> another = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(something);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">doAnother</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(another.join(<span class="string">'!'</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span>&#123;</span><br><span class="line">        doSomething: doSomething,</span><br><span class="line">        doAnother: doAnother</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> foo = CoolModule();</span><br><span class="line">foo.doSomething();</span><br><span class="line"><span class="comment">//cool</span></span><br><span class="line"></span><br><span class="line">foo.doAnother();</span><br><span class="line"><span class="comment">//1!2!3</span></span><br></pre></td></tr></table></figure></p>
 <ul>
-<li><p>这个模式在<code>JavaScript</code>中被称为模块。最常见的实现模块模式的方法通常被称为模块暴露，这里展示的是其变体。</p>
-</li>
-<li><p><code>CoolModule()</code>只是一个函数，必须要通过调用它来创建一个模块实例。</p>
-</li>
-<li><p><code>CoolModule()</code>返回一个用对象字面量语法<code>{key:value,...}</code>来表示对象。这个返回的对象中含有对内部函数而不是内部数据变量的引用。</p>
-</li>
-<li><p><code>doSomthing()</code>和<code>doAnother()</code>函数具有涵盖模块实例内部作用域的闭包（通过调用<code>CoolModule()</code>实现）。</p>
-</li>
+<li>这个模式在<code>JavaScript</code>中被称为模块。最常见的实现模块模式的方法通常被称为模块暴露，这里展示的是其变体。</li>
+<li><code>CoolModule()</code>只是一个函数，必须要通过调用它来创建一个模块实例。</li>
+<li><code>CoolModule()</code>返回一个用对象字面量语法<code>{key:value,...}</code>来表示对象。这个返回的对象中含有对内部函数而不是内部数据变量的引用。</li>
+<li><code>doSomthing()</code>和<code>doAnother()</code>函数具有涵盖模块实例内部作用域的闭包（通过调用<code>CoolModule()</code>实现）。</li>
 </ul>
 <p><strong>模块模式需要具备两个必要条件：</strong></p>
 <blockquote>
@@ -443,10 +439,8 @@
 <p>相比之下，<code>ES6</code> 模块 <code>API</code> 更加稳定（<code>API</code>不会在运行时改变）。由于编辑器知道这一点，因此可以在（的确也这样做了）编译期检查对导入模块的 <code>API</code> 成员的引用是否 真实存在 。如果 <code>API</code> 引用并不存在，编译器会在运行时抛出一个或多个“早期”错误，而不会像往常一样在运行期采用动态的解决方案。</p>
 </blockquote>
 <ul>
-<li><p><code>ES6</code> 的模块没有“行内”格式，必须被定义在独立的文件中（一个文件一个模块）。</p>
-</li>
-<li><p>浏览器或引擎有一个默认的“模块加载器”（可以被重载，但这远超出了我们的讨论范围）可以在导入模块时异步地加载模块文件。</p>
-</li>
+<li><code>ES6</code> 的模块没有“行内”格式，必须被定义在独立的文件中（一个文件一个模块）。</li>
+<li>浏览器或引擎有一个默认的“模块加载器”（可以被重载，但这远超出了我们的讨论范围）可以在导入模块时异步地加载模块文件。</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">bar.js</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params">who</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"Let me introduce: "</span> + who;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> hello;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">foo.js</span><br><span class="line"><span class="comment">// 仅从 "bar" 模块导入 hello()</span></span><br><span class="line"><span class="keyword">import</span> hello <span class="keyword">from</span> <span class="string">"bar"</span>;</span><br><span class="line"><span class="keyword">var</span> hungry = <span class="string">"hippo"</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">awesome</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(</span><br><span class="line">        hello( hungry ).toUpperCase()</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> awesome;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">baz.js</span><br><span class="line"><span class="comment">// 导入完整的 "foo" 和 "bar" 模块</span></span><br><span class="line"><span class="built_in">module</span> foo <span class="keyword">from</span> <span class="string">"foo"</span>;</span><br><span class="line"><span class="built_in">module</span> bar <span class="keyword">from</span> <span class="string">"bar"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(</span><br><span class="line">    bar.hello( <span class="string">"rhino"</span> )</span><br><span class="line">); <span class="comment">// Let me introduce: rhino</span></span><br><span class="line">foo.awesome(); <span class="comment">// LET ME INTRODUCE: HIPPO</span></span><br></pre></td></tr></table></figure>
 <ul>
@@ -478,7 +472,7 @@
         <p><span>本文标题:</span><a href="/2018/07/08/你不知道的JavaScript-闭包/">你不知道的JavaScript--闭包</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Sanakey</a></p>
         <p><span>发布时间:</span>2018-07-08, 22:50:23</p>
-        <p><span>最后更新:</span>2018-07-08, 22:59:30</p>
+        <p><span>最后更新:</span>2018-07-08, 23:01:11</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/07/08/你不知道的JavaScript-闭包/" title="你不知道的JavaScript--闭包">https://sanakey.github.io/2018/07/08/你不知道的JavaScript-闭包/</a>
             <span class="copy-path" data-clipboard-text="原文: https://sanakey.github.io/2018/07/08/你不知道的JavaScript-闭包/　　作者: Sanakey" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
