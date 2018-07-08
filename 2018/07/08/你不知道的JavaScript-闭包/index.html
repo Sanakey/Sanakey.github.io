@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="Sanakey的小站">
 <meta property="og:description" content="前言继续上次的&amp;lt;你不知道的JavaScript&amp;gt;读书笔记，这次是闭包部分。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-07-08T14:54:01.515Z">
+<meta property="og:updated_time" content="2018-07-08T14:59:30.627Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="你不知道的JavaScript--闭包">
 <meta name="twitter:description" content="前言继续上次的&amp;lt;你不知道的JavaScript&amp;gt;读书笔记，这次是闭包部分。">
@@ -350,14 +350,10 @@
 <h3 id="再次举例："><a href="#再次举例：" class="headerlink" title="再次举例："></a>再次举例：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(a);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> bar;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> baz = foo();</span><br><span class="line">baz(); <span class="comment">//2</span></span><br></pre></td></tr></table></figure>
 <p>从这个例子来看闭包的特性：</p>
 <ul>
-<li><p>函数<code>bar()</code>的词法作用域可以访问<code>foo()</code>的内部作用域，我们将<code>bar</code>所引用的函数对象本身当做一个值类型传递。</p>
-</li>
-<li><p>通过不同的标识符引用调用了内部函数<code>bar()</code>。</p>
-</li>
-<li><p>在这个例子中，函数<code>bar()</code>在自己定义的词法作用域之外的地方执行。</p>
-</li>
-<li><p>阻止引擎的垃圾回收机制释放<code>foo()</code>函数的内部作用域。</p>
-</li>
+<li>函数<code>bar()</code>的词法作用域可以访问<code>foo()</code>的内部作用域，我们将<code>bar</code>所引用的函数对象本身当做一个值类型传递。</li>
+<li>通过不同的标识符引用调用了内部函数<code>bar()</code>。</li>
+<li>在这个例子中，函数<code>bar()</code>在自己定义的词法作用域之外的地方执行。</li>
+<li>阻止引擎的垃圾回收机制释放<code>foo()</code>函数的内部作用域。</li>
 </ul>
 <p>谁还在使用这个内部作用域呢？</p>
 <ul>
@@ -482,7 +478,7 @@
         <p><span>本文标题:</span><a href="/2018/07/08/你不知道的JavaScript-闭包/">你不知道的JavaScript--闭包</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Sanakey</a></p>
         <p><span>发布时间:</span>2018-07-08, 22:50:23</p>
-        <p><span>最后更新:</span>2018-07-08, 22:54:01</p>
+        <p><span>最后更新:</span>2018-07-08, 22:59:30</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/07/08/你不知道的JavaScript-闭包/" title="你不知道的JavaScript--闭包">https://sanakey.github.io/2018/07/08/你不知道的JavaScript-闭包/</a>
             <span class="copy-path" data-clipboard-text="原文: https://sanakey.github.io/2018/07/08/你不知道的JavaScript-闭包/　　作者: Sanakey" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
