@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Sanakey的小站</title>
   
-  <subtitle>种一棵树最好的时间是十年前，其次是现在!慢慢来，往往比较快!</subtitle>
+  <subtitle>种一棵树最好的时间是十年前，其次是现在!慢慢来，往往比较快~</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://sanakey.github.io/"/>
@@ -204,9 +204,9 @@
     </summary>
     
     
-      <category term="github" scheme="https://sanakey.github.io/tags/github/"/>
-    
       <category term="hexo" scheme="https://sanakey.github.io/tags/hexo/"/>
+    
+      <category term="github" scheme="https://sanakey.github.io/tags/github/"/>
     
       <category term="博客" scheme="https://sanakey.github.io/tags/%E5%8D%9A%E5%AE%A2/"/>
     
