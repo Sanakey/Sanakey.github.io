@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="前言this是JavaScript里面老生常谈的问题，因为其诡异的机制，基本每个初学者都会迷惑于this的指向问题，而this又是面向对象编程的基础，所以弄明白this的指向是提高自己编程能力的重要一环。《你不知道的JavaScript》上册第二部分详细讲解了this的几种指向问题，如果你还不懂this的指向，下面的文章应该能帮你解决这个难题。">
+<meta name="description" content="前言this是JavaScript里面老生常谈的问题，因为其诡异的机制，基本每个初学者都会迷惑于this的指向问题，而this又是面向对象编程的基础，所以弄明白this的指向是提高自己编程能力的重要一环。《你不知道的JavaScript》上册第二部分详细讲解了this的几种指向问题，如果你还不懂this的指向，下面的文章也许能帮你解决这个难题。">
 <meta name="keywords" content="JavaScript,读书笔记,this">
 <meta property="og:type" content="article">
 <meta property="og:title" content="你不知道的JavaScript--this绑定规则">
 <meta property="og:url" content="https://sanakey.github.io/2018/07/13/你不知道的JavaScript-this绑定规则/index.html">
 <meta property="og:site_name" content="Sanakey的小站">
-<meta property="og:description" content="前言this是JavaScript里面老生常谈的问题，因为其诡异的机制，基本每个初学者都会迷惑于this的指向问题，而this又是面向对象编程的基础，所以弄明白this的指向是提高自己编程能力的重要一环。《你不知道的JavaScript》上册第二部分详细讲解了this的几种指向问题，如果你还不懂this的指向，下面的文章应该能帮你解决这个难题。">
+<meta property="og:description" content="前言this是JavaScript里面老生常谈的问题，因为其诡异的机制，基本每个初学者都会迷惑于this的指向问题，而this又是面向对象编程的基础，所以弄明白this的指向是提高自己编程能力的重要一环。《你不知道的JavaScript》上册第二部分详细讲解了this的几种指向问题，如果你还不懂this的指向，下面的文章也许能帮你解决这个难题。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-07-13T08:52:51.829Z">
+<meta property="og:updated_time" content="2018-07-13T14:17:45.154Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="你不知道的JavaScript--this绑定规则">
-<meta name="twitter:description" content="前言this是JavaScript里面老生常谈的问题，因为其诡异的机制，基本每个初学者都会迷惑于this的指向问题，而this又是面向对象编程的基础，所以弄明白this的指向是提高自己编程能力的重要一环。《你不知道的JavaScript》上册第二部分详细讲解了this的几种指向问题，如果你还不懂this的指向，下面的文章应该能帮你解决这个难题。">
+<meta name="twitter:description" content="前言this是JavaScript里面老生常谈的问题，因为其诡异的机制，基本每个初学者都会迷惑于this的指向问题，而this又是面向对象编程的基础，所以弄明白this的指向是提高自己编程能力的重要一环。《你不知道的JavaScript》上册第二部分详细讲解了this的几种指向问题，如果你还不懂this的指向，下面的文章也许能帮你解决这个难题。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -341,7 +341,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><code>this</code>是<code>JavaScript</code>里面老生常谈的问题，因为其诡异的机制，基本每个初学者都会迷惑于<code>this</code>的指向问题，而<code>this</code>又是面向对象编程的基础，所以弄明白<code>this</code>的指向是提高自己编程能力的重要一环。《你不知道的JavaScript》上册第二部分详细讲解了<code>this</code>的几种指向问题，如果你还不懂<code>this</code>的指向，下面的文章应该能帮你解决这个难题。</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><code>this</code>是<code>JavaScript</code>里面老生常谈的问题，因为其诡异的机制，基本每个初学者都会迷惑于<code>this</code>的指向问题，而<code>this</code>又是面向对象编程的基础，所以弄明白<code>this</code>的指向是提高自己编程能力的重要一环。《你不知道的JavaScript》上册第二部分详细讲解了<code>this</code>的几种指向问题，如果你还不懂<code>this</code>的指向，下面的文章也许能帮你解决这个难题。</p>
 <a id="more"></a>
 <h2 id="this解析"><a href="#this解析" class="headerlink" title="this解析"></a>this解析</h2><h3 id="调用位置"><a href="#调用位置" class="headerlink" title="调用位置"></a>调用位置</h3><ul>
 <li>什么是调用位置？<blockquote>
@@ -443,7 +443,7 @@
 <li>只使用词法作用域并完全抛弃错误 <code>this</code> 风格的代码；</li>
 <li>完全采用 <code>this</code> 风格，在必要时使用 <code>bind(..)</code> ，尽量避免使用 <code>self = this</code> 和箭头函数。</li>
 </ol>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>判断this绑定对象的四条规则：</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>判断this绑定对象的四条规则：</p>
 <blockquote>
 <ol>
 <li>由 new 调用？绑定到新创建的对象。</li>
@@ -456,6 +456,23 @@
 <blockquote>
 <p>ES6 中的箭头函数并不会使用四条标准的绑定规则，而是根据当前的词法作用域来决定this ，具体来说，<strong>箭头函数会继承外层函数调用的 this 绑定（无论 this 绑定到什么）</strong>。这其实和 ES6 之前代码中的 self = this 机制一样。</p>
 </blockquote>
+<h3 id="默认绑定和隐式绑定额外说明"><a href="#默认绑定和隐式绑定额外说明" class="headerlink" title="默认绑定和隐式绑定额外说明"></a>默认绑定和隐式绑定额外说明</h3><blockquote>
+<ul>
+<li><code>this</code>的指向，是在函数被调用的时候确定的</li>
+<li>如果函数独立调用，那么该函数内部的<code>this</code>，在严格模式中指向<code>undefined</code>。在非严格模式中，指向全局对象。</li>
+<li><p>例如<code>fn()</code>是独立调用，<code>fn函数</code>里面的<code>this</code>在非严格模式下指向全局对象，严格模式下会指向<code>undefined</code>。</p>
+</li>
+<li><p>如果函数被某个对象调用，那么函数中的<code>this</code>，指向的就是这个对象。</p>
+</li>
+<li><p>例如<code>obj.fn()</code>，<code>fn()</code>被<code>obj</code>调用，<code>this</code>指向的就是<code>obj</code>。</p>
+</li>
+<li><p>如果出现<code>obj1.obj2.foo();</code>这种情况，<code>this</code>指向的是<code>obj2</code>，对象属性引用链中<strong>只有最顶层或者说最后一层</strong>会影响调用位置。</p>
+<p>关于属性调用，比如<strong>obj.a</strong></p>
+</li>
+<li>当<code>obj</code>在全局环境中声明时，无论<code>obj.a</code>在什么地方调用，这里的<code>this</code>都指向全局对象<code>window</code>。</li>
+<li>当<code>obj</code>在函数环境中声明时，在严格模式下<code>this</code>指向<code>undefined</code>，在非严格模式下指向全局对象。</li>
+</ul>
+</blockquote>
 
       
     </div>
@@ -467,7 +484,7 @@
         <p><span>本文标题:</span><a href="/2018/07/13/你不知道的JavaScript-this绑定规则/">你不知道的JavaScript--this绑定规则</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Sanakey</a></p>
         <p><span>发布时间:</span>2018-07-13, 09:13:34</p>
-        <p><span>最后更新:</span>2018-07-13, 16:52:51</p>
+        <p><span>最后更新:</span>2018-07-13, 22:17:45</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/07/13/你不知道的JavaScript-this绑定规则/" title="你不知道的JavaScript--this绑定规则">https://sanakey.github.io/2018/07/13/你不知道的JavaScript-this绑定规则/</a>
             <span class="copy-path" data-clipboard-text="原文: https://sanakey.github.io/2018/07/13/你不知道的JavaScript-this绑定规则/　　作者: Sanakey" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -527,7 +544,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#this解析"><span class="toc-number">2.</span> <span class="toc-text">this解析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#调用位置"><span class="toc-number">2.1.</span> <span class="toc-text">调用位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#绑定规则"><span class="toc-number">2.2.</span> <span class="toc-text">绑定规则</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#默认绑定"><span class="toc-number">2.2.1.</span> <span class="toc-text">默认绑定</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#隐式绑定"><span class="toc-number">2.2.2.</span> <span class="toc-text">隐式绑定</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#显示绑定"><span class="toc-number">2.2.3.</span> <span class="toc-text">显示绑定</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#硬绑定"><span class="toc-number">2.2.3.1.</span> <span class="toc-text">硬绑定</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#API调用的“上下文”"><span class="toc-number">2.2.3.2.</span> <span class="toc-text">API调用的“上下文”</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#new绑定"><span class="toc-number">2.2.4.</span> <span class="toc-text">new绑定</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ES6中的this词法"><span class="toc-number">2.2.5.</span> <span class="toc-text">ES6中的this词法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-number">2.3.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#this解析"><span class="toc-number">2.</span> <span class="toc-text">this解析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#调用位置"><span class="toc-number">2.1.</span> <span class="toc-text">调用位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#绑定规则"><span class="toc-number">2.2.</span> <span class="toc-text">绑定规则</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#默认绑定"><span class="toc-number">2.2.1.</span> <span class="toc-text">默认绑定</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#隐式绑定"><span class="toc-number">2.2.2.</span> <span class="toc-text">隐式绑定</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#显示绑定"><span class="toc-number">2.2.3.</span> <span class="toc-text">显示绑定</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#硬绑定"><span class="toc-number">2.2.3.1.</span> <span class="toc-text">硬绑定</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#API调用的“上下文”"><span class="toc-number">2.2.3.2.</span> <span class="toc-text">API调用的“上下文”</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#new绑定"><span class="toc-number">2.2.4.</span> <span class="toc-text">new绑定</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ES6中的this词法"><span class="toc-number">2.2.5.</span> <span class="toc-text">ES6中的this词法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#默认绑定和隐式绑定额外说明"><span class="toc-number">3.1.</span> <span class="toc-text">默认绑定和隐式绑定额外说明</span></a></li></ol></li></ol>
         
     </div>
     <style>
