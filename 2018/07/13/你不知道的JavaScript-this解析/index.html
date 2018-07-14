@@ -18,14 +18,14 @@
 <meta name="description" content="前言this是JavaScript里面老生常谈的问题，因为其诡异的机制，基本每个初学者都会迷惑于this的指向问题，而this又是面向对象编程的基础，所以弄明白this的指向是提高自己编程能力的重要一环。《你不知道的JavaScript》上册第二部分详细讲解了this的几种指向问题，如果你还不懂this的指向，下面的文章也许能帮你解决这个难题。">
 <meta name="keywords" content="JavaScript,读书笔记,this">
 <meta property="og:type" content="article">
-<meta property="og:title" content="你不知道的JavaScript--this">
-<meta property="og:url" content="https://sanakey.github.io/2018/07/13/你不知道的JavaScript-this绑定规则/index.html">
+<meta property="og:title" content="你不知道的JavaScript--this解析">
+<meta property="og:url" content="https://sanakey.github.io/2018/07/13/你不知道的JavaScript-this解析/index.html">
 <meta property="og:site_name" content="Sanakey的小站">
 <meta property="og:description" content="前言this是JavaScript里面老生常谈的问题，因为其诡异的机制，基本每个初学者都会迷惑于this的指向问题，而this又是面向对象编程的基础，所以弄明白this的指向是提高自己编程能力的重要一环。《你不知道的JavaScript》上册第二部分详细讲解了this的几种指向问题，如果你还不懂this的指向，下面的文章也许能帮你解决这个难题。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-07-14T02:59:37.335Z">
+<meta property="og:updated_time" content="2018-07-14T03:02:34.455Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="你不知道的JavaScript--this">
+<meta name="twitter:title" content="你不知道的JavaScript--this解析">
 <meta name="twitter:description" content="前言this是JavaScript里面老生常谈的问题，因为其诡异的机制，基本每个初学者都会迷惑于this的指向问题，而this又是面向对象编程的基础，所以弄明白this的指向是提高自己编程能力的重要一环。《你不知道的JavaScript》上册第二部分详细讲解了this的几种指向问题，如果你还不懂this的指向，下面的文章也许能帮你解决这个难题。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -58,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>你不知道的JavaScript--this | Sanakey的小站</title>
+<title>你不知道的JavaScript--this解析 | Sanakey的小站</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -297,10 +297,10 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-你不知道的JavaScript-this绑定规则" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-你不知道的JavaScript-this解析" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/07/13/你不知道的JavaScript-this绑定规则/" class="article-date">
+      <a href="/2018/07/13/你不知道的JavaScript-this解析/" class="article-date">
       <time datetime="2018-07-13T01:13:34.000Z" itemprop="datePublished">2018-07-13</time>
 </a>
 
@@ -316,7 +316,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      你不知道的JavaScript--this
+      你不知道的JavaScript--this解析
     </h1>
   
 
@@ -508,13 +508,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/07/13/你不知道的JavaScript-this绑定规则/">你不知道的JavaScript--this</a></p>
+        <p><span>本文标题:</span><a href="/2018/07/13/你不知道的JavaScript-this解析/">你不知道的JavaScript--this解析</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Sanakey</a></p>
         <p><span>发布时间:</span>2018-07-13, 09:13:34</p>
-        <p><span>最后更新:</span>2018-07-14, 10:59:37</p>
+        <p><span>最后更新:</span>2018-07-14, 11:02:34</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/07/13/你不知道的JavaScript-this绑定规则/" title="你不知道的JavaScript--this">https://sanakey.github.io/2018/07/13/你不知道的JavaScript-this绑定规则/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://sanakey.github.io/2018/07/13/你不知道的JavaScript-this绑定规则/　　作者: Sanakey" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/07/13/你不知道的JavaScript-this解析/" title="你不知道的JavaScript--this解析">https://sanakey.github.io/2018/07/13/你不知道的JavaScript-this解析/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://sanakey.github.io/2018/07/13/你不知道的JavaScript-this解析/　　作者: Sanakey" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -607,7 +607,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"你不知道的JavaScript--this　| Sanakey的小站　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"你不知道的JavaScript--this解析　| Sanakey的小站　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -662,7 +662,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/07/13/你不知道的JavaScript-this绑定规则/">你不知道的JavaScript--this</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/08/你不知道的JavaScript-闭包/">你不知道的JavaScript--闭包</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/06/你不知道的JavaScript-作用域/">你不知道的JavaScript--作用域</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/03/微信小程序-自定义tabBar组件/">微信小程序--自定义tabBar组件</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/02/Git与Github常用命令/">Git与Github常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/01/微信小程序入门-事件/">微信小程序入门--事件</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/27/微信小程序入门-二级菜单/">微信小程序入门--二级菜单</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/26/Github-Pages-Hexo从零开始的免费建站教程/">Github Pages+Hexo从零开始的免费建站教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/25/My-First-Post/">My First Post</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/25/hello-world/">Hello World</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/07/13/你不知道的JavaScript-this解析/">你不知道的JavaScript--this解析</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/08/你不知道的JavaScript-闭包/">你不知道的JavaScript--闭包</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/06/你不知道的JavaScript-作用域/">你不知道的JavaScript--作用域</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/03/微信小程序-自定义tabBar组件/">微信小程序--自定义tabBar组件</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/02/Git与Github常用命令/">Git与Github常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/01/微信小程序入门-事件/">微信小程序入门--事件</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/27/微信小程序入门-二级菜单/">微信小程序入门--二级菜单</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/26/Github-Pages-Hexo从零开始的免费建站教程/">Github Pages+Hexo从零开始的免费建站教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/25/My-First-Post/">My First Post</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/25/hello-world/">Hello World</a></li></ul>
 
 
 
