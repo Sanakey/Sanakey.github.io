@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="Sanakey的小站">
 <meta property="og:description" content="前言this是JavaScript里面老生常谈的问题，因为其诡异的机制，基本每个初学者都会迷惑于this的指向问题，而this又是面向对象编程的基础，所以弄明白this的指向是提高自己编程能力的重要一环。《你不知道的JavaScript》上册第二部分详细讲解了this的几种指向问题，如果你还不懂this的指向，下面的文章也许能帮你解决这个难题。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-07-14T03:02:34.455Z">
+<meta property="og:updated_time" content="2018-07-14T03:08:39.980Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="你不知道的JavaScript--this解析">
 <meta name="twitter:description" content="前言this是JavaScript里面老生常谈的问题，因为其诡异的机制，基本每个初学者都会迷惑于this的指向问题，而this又是面向对象编程的基础，所以弄明白this的指向是提高自己编程能力的重要一环。《你不知道的JavaScript》上册第二部分详细讲解了this的几种指向问题，如果你还不懂this的指向，下面的文章也许能帮你解决这个难题。">
@@ -449,21 +449,11 @@
 <p>至此，我们可以根据优先级来判断函数在某个调用位置应用的是哪条规则。</p>
 <blockquote>
 <ol>
-<li>函数是否在 new 中调用（ new 绑定）？如果是的话 this 绑定的是新创建的对象。</li>
+<li>函数是否在 new 中调用（ new 绑定）？如果是的话 this 绑定的是新创建的对象。<br>var bar = new foo()</li>
+<li>函数是否通过 call 、 apply （显式绑定）或者硬绑定调用？如果是的话， this 绑定的是指定的对象。<br>var bar = foo.call(obj2)</li>
+<li>函数是否在某个上下文对象中调用（隐式绑定）？如果是的话， this 绑定的是那个上下文对象。<br>var bar = obj1.foo()</li>
+<li>如果都不是的话，使用默认绑定。如果在严格模式下，就绑定到 undefined ，否则绑定到全局对象。<br>var bar = foo()</li>
 </ol>
-<p>var bar = new foo()</p>
-<ol start="2">
-<li>函数是否通过 call 、 apply （显式绑定）或者硬绑定调用？如果是的话， this 绑定的是指定的对象。</li>
-</ol>
-<p>var bar = foo.call(obj2)</p>
-<ol start="3">
-<li>函数是否在某个上下文对象中调用（隐式绑定）？如果是的话， this 绑定的是那个上<br>下文对象。</li>
-</ol>
-<p>var bar = obj1.foo()</p>
-<ol start="4">
-<li>如果都不是的话，使用默认绑定。如果在严格模式下，就绑定到 undefined ，否则绑定到<br>全局对象。</li>
-</ol>
-<p>var bar = foo()</p>
 </blockquote>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>判断this绑定对象的四条规则：</p>
 <blockquote>
@@ -511,7 +501,7 @@
         <p><span>本文标题:</span><a href="/2018/07/13/你不知道的JavaScript-this解析/">你不知道的JavaScript--this解析</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Sanakey</a></p>
         <p><span>发布时间:</span>2018-07-13, 09:13:34</p>
-        <p><span>最后更新:</span>2018-07-14, 11:02:34</p>
+        <p><span>最后更新:</span>2018-07-14, 11:08:39</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/07/13/你不知道的JavaScript-this解析/" title="你不知道的JavaScript--this解析">https://sanakey.github.io/2018/07/13/你不知道的JavaScript-this解析/</a>
             <span class="copy-path" data-clipboard-text="原文: https://sanakey.github.io/2018/07/13/你不知道的JavaScript-this解析/　　作者: Sanakey" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
