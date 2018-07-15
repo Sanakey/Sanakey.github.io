@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="Sanakey的小站">
 <meta property="og:description" content="前言继续整理&amp;lt;你不知道的JavaScript&amp;gt;读书笔记，本文是对象部分。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-07-15T08:41:33.117Z">
+<meta property="og:updated_time" content="2018-07-15T09:56:24.707Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="你不知道的JavaScript--对象">
 <meta name="twitter:description" content="前言继续整理&amp;lt;你不知道的JavaScript&amp;gt;读书笔记，本文是对象部分。">
@@ -372,12 +372,16 @@
 <li>RegExp</li>
 <li>Error</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> strPrimitive = <span class="string">"I am a string"</span>;</span><br><span class="line"><span class="built_in">console</span>.log( strPrimitive.length ); <span class="comment">// 13</span></span><br><span class="line"><span class="built_in">console</span>.log( strPrimitive.charAt( <span class="number">3</span> ) ); <span class="comment">// "m"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> strPrimitive = <span class="string">"I am a string"</span>;</span><br><span class="line"><span class="built_in">console</span>.log( strPrimitive.length ); <span class="comment">// 13</span></span><br><span class="line"><span class="built_in">console</span>.log( strPrimitive.charAt( <span class="number">3</span> ) ); <span class="comment">// "m"</span></span><br><span class="line"><span class="keyword">var</span> num = <span class="number">100.58</span>;</span><br><span class="line"><span class="built_in">console</span>.log(num.toFixed(<span class="number">1</span>)); <span class="comment">//100.6</span></span><br></pre></td></tr></table></figure>
 <p>使用以上两种方法，我们都可以直接在字符串字面量上访问属性或者方法，因为引擎自动把字面量转换成 String 对象，所以可以访问属性和方法。</p>
+<p>同理，数字和布尔值也是如此。</p>
+<p>null 和 undefined 没有对应的构造形式，它们只有文字形式。相反， Date 只有构造，没有文字形式。</p>
+<p> 对于Object 、 Array 、 Function 和 RegExp</p>
 <ul>
 <li>首选更简单的文字形式。</li>
 <li>建议只在需要那些额外选项时使用构造形式。</li>
 </ul>
+<p>Error 对象很少在代码中显式创建，一般是在抛出异常时被自动创建。</p>
 <h3 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myObject = &#123;</span><br><span class="line">    a: <span class="number">2</span></span><br><span class="line">&#125;;</span><br><span class="line">myObject.a; <span class="comment">// 2</span></span><br><span class="line">myObject[<span class="string">"a"</span>]; <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li><code>.a</code>语法通常被称为“属性访问”</li>
@@ -543,7 +547,7 @@
         <p><span>本文标题:</span><a href="/2018/07/14/你不知道的JavaScript-对象/">你不知道的JavaScript--对象</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Sanakey</a></p>
         <p><span>发布时间:</span>2018-07-14, 14:13:25</p>
-        <p><span>最后更新:</span>2018-07-15, 16:41:33</p>
+        <p><span>最后更新:</span>2018-07-15, 17:56:24</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/07/14/你不知道的JavaScript-对象/" title="你不知道的JavaScript--对象">https://sanakey.github.io/2018/07/14/你不知道的JavaScript-对象/</a>
             <span class="copy-path" data-clipboard-text="原文: https://sanakey.github.io/2018/07/14/你不知道的JavaScript-对象/　　作者: Sanakey" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
