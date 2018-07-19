@@ -15,20 +15,20 @@
 
 
 
-<meta name="description" content="工作中经常会使用到git命令来进行代码版本管理，总结了一些常用场景下的命令，在此分享出来。">
-<meta name="keywords" content="github,git">
+<meta name="description" content="前言作为编程初学者，经常会听到人们说面向对象编程，而自己平常写的代码都是面向过程的，根本不懂：面向对象到底是什么东西，有什么好处，我们为什么要使用面向对象编程以及什么时候使用面向对象编程等一系列问题。看完这篇文章，你或许会有所体会。">
+<meta name="keywords" content="JavaScript,笔记,对象">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git与Github常用命令">
-<meta property="og:url" content="https://sanakey.github.io/2018/07/02/Git与Github常用命令/index.html">
+<meta property="og:title" content="面向对象与面向过程">
+<meta property="og:url" content="https://sanakey.github.io/2018/07/16/面向对象与面向过程/index.html">
 <meta property="og:site_name" content="Sanakey的小站">
-<meta property="og:description" content="工作中经常会使用到git命令来进行代码版本管理，总结了一些常用场景下的命令，在此分享出来。">
+<meta property="og:description" content="前言作为编程初学者，经常会听到人们说面向对象编程，而自己平常写的代码都是面向过程的，根本不懂：面向对象到底是什么东西，有什么好处，我们为什么要使用面向对象编程以及什么时候使用面向对象编程等一系列问题。看完这篇文章，你或许会有所体会。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://s1.ax2x.com/2018/07/02/nkjYB.png">
-<meta property="og:updated_time" content="2018-07-08T14:49:26.560Z">
+<meta property="og:image" content="https://pic1.zhimg.com/80/664ba37eeee9f4623c06c066867f1d38_hd.jpg">
+<meta property="og:updated_time" content="2018-07-19T14:28:39.049Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Git与Github常用命令">
-<meta name="twitter:description" content="工作中经常会使用到git命令来进行代码版本管理，总结了一些常用场景下的命令，在此分享出来。">
-<meta name="twitter:image" content="https://s1.ax2x.com/2018/07/02/nkjYB.png">
+<meta name="twitter:title" content="面向对象与面向过程">
+<meta name="twitter:description" content="前言作为编程初学者，经常会听到人们说面向对象编程，而自己平常写的代码都是面向过程的，根本不懂：面向对象到底是什么东西，有什么好处，我们为什么要使用面向对象编程以及什么时候使用面向对象编程等一系列问题。看完这篇文章，你或许会有所体会。">
+<meta name="twitter:image" content="https://pic1.zhimg.com/80/664ba37eeee9f4623c06c066867f1d38_hd.jpg">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -60,7 +60,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Git与Github常用命令 | Sanakey的小站</title>
+<title>面向对象与面向过程 | Sanakey的小站</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -299,11 +299,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-Git与Github常用命令" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-面向对象与面向过程" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/07/02/Git与Github常用命令/" class="article-date">
-      <time datetime="2018-07-02T03:43:27.000Z" itemprop="datePublished">2018-07-02</time>
+      <a href="/2018/07/16/面向对象与面向过程/" class="article-date">
+      <time datetime="2018-07-16T04:36:16.000Z" itemprop="datePublished">2018-07-16</time>
 </a>
 
 
@@ -318,7 +318,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Git与Github常用命令
+      面向对象与面向过程
     </h1>
   
 
@@ -327,13 +327,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Github/">Github</a>
+    <a class="article-category-link" href="/categories/学习笔记/">学习笔记</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/对象/">对象</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -343,93 +343,96 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>工作中经常会使用到<code>git</code>命令来进行代码版本管理，总结了一些常用场景下的命令，在此分享出来。<br><a id="more"></a></p>
-<h2 id="托管自己编写的代码"><a href="#托管自己编写的代码" class="headerlink" title="托管自己编写的代码"></a>托管自己编写的代码</h2><h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git remote add origin git@github.com:my/test.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
-<h3 id="步骤说明"><a href="#步骤说明" class="headerlink" title="步骤说明"></a>步骤说明</h3><ol>
-<li><p>首先在<code>GitHub</code>上创建一个仓库，把地址复制下来，如：<code>https://github.com/my/test.git</code></p>
-</li>
-<li><p>打开<code>GitBash</code>，<code>cd</code>到要提交的项目根目录下，输入<code>git init</code>命令初始化仓库，此时在项目文件夹下会出现<code>.git</code>隐藏文件夹</p>
-</li>
-</ol>
-<ol start="3">
-<li><p>使用命令<code>git add .</code>添加所有文件到暂存区。在修改代码之后，可以单独使用<code>git add 文件名</code>（后面是你修改过的文件） 添加指定修改的文件到暂存区</p>
-</li>
-<li><p><code>git commit -m &quot;first commit&quot;</code>，提交代码。<code>&quot;first commit&quot;</code>部分为本次提交的更新说明</p>
-</li>
-<li><p>关联远程仓库：<code>git remote add origin https://github.com/my/test.git</code>（后面是你的仓库地址）</p>
-</li>
-<li><p>我们可以通过命令<code>git status</code>来查看是否还有文件未提交，如果有红色文字出现，说明还有文件未提交。</p>
-</li>
-<li><p><code>git push -u origin master</code> （推送到远程仓库）。</p>
-</li>
-</ol>
-<p>由于远程库是空的，我们第一次推送<code>master</code>分支时，加上了 <code>–u</code>参数，<code>Git</code>不但会把本地的<code>master</code>分支内容推送到远程新的<code>master</code>分支，还会把本地的<code>master</code>分支和远程的<code>master</code>分支关联起来，在以后的推送或者拉取时，只要做了提交就可以使用命令<code>git push origin master</code>进行推送。</p>
-<h3 id="可能出现的错误"><a href="#可能出现的错误" class="headerlink" title="可能出现的错误"></a>可能出现的错误</h3><h4 id="一、错误信息"><a href="#一、错误信息" class="headerlink" title="一、错误信息"></a>一、错误信息</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">my@my MINGW64 /e/gitProjects/text (master)</span><br><span class="line">$ git push origin master</span><br><span class="line">To git@github.com:my/text.git</span><br><span class="line"> ! [rejected]        master -&gt; master (fetch first)</span><br><span class="line">error: failed to push some refs to &apos;git@github.com:my/text.git&apos;</span><br><span class="line">hint: Updates were rejected because the remote contains work that you do</span><br><span class="line">hint: not have locally. This is usually caused by another repository pushing</span><br><span class="line">hint: to the same ref. You may want to first integrate the remote changes</span><br><span class="line">hint: (e.g., &apos;git pull ...&apos;) before pushing again.</span><br><span class="line">hint: See the &apos;Note about fast-forwards&apos; in &apos;git push --help&apos; for details.</span><br></pre></td></tr></table></figure>
-<h4 id="二、问题分析"><a href="#二、问题分析" class="headerlink" title="二、问题分析"></a>二、问题分析</h4><p>出现这种问题的原因一般都是代码仓库存在本地没有的文件。</p>
-<p>到<code>github</code>上查看远程<code>repository</code>，会发现有一个<code>README.md</code>文件（本地代码中没有），而出现错误的原因是<code>github</code>中的<code>README.md</code>文件不在本地代码目录中。</p>
-<p>也就是说我们需要先将远程代码库中的任何文件先<code>pull</code>到本地代码库中，才能<code>push</code>新的代码到<code>github</code>代码库中。</p>
-<h4 id="三、解决问题"><a href="#三、解决问题" class="headerlink" title="三、解决问题"></a>三、解决问题</h4><p>方法一</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>作为编程初学者，经常会听到人们说面向对象编程，而自己平常写的代码都是面向过程的，根本不懂：面向对象到底是什么东西，有什么好处，我们为什么要使用面向对象编程以及什么时候使用面向对象编程等一系列问题。看完这篇文章，你或许会有所体会。<br><a id="more"></a></p>
+<h2 id="面向对象与面向过程的区别"><a href="#面向对象与面向过程的区别" class="headerlink" title="面向对象与面向过程的区别"></a>面向对象与面向过程的区别</h2><p>何谓面向对象编程（OOP）？</p>
+<p>从概念上来说，用对象的思想去写代码，就是面向对象编程。</p>
+<p>编写程序通常有两种模式</p>
+<ul>
+<li>面向过程编程</li>
+<li>面向对象编程</li>
+</ul>
+<blockquote>
+<ul>
+<li>面向过程编程就是分析出解决问题所需要的步骤，然后用函数把这些步骤一步一步实现，使用的时候一个一个依次调用就可以了；</li>
+<li>面向对象编程是把问题分解成各个对象，建立对象的目的不是为了完成一个步骤，而是为了描叙某个事物在整个解决问题的步骤中的行为。</li>
+</ul>
+</blockquote>
+<p>举个例子</p>
+<p>你接到一个需求，要把一个冰淇淋装进冰箱，面向过程，你会把过程拆成3步</p>
 <ol>
-<li><p>将远程代码库中的代码<code>pull</code>到本地代码库，并且执行合并<code>merge</code>：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git pull --rebase origin master</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>再次<code>push</code>代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin master</span><br></pre></td></tr></table></figure>
-</li>
+<li>打开冰箱</li>
+<li>放入冰淇淋</li>
+<li>关闭冰箱</li>
 </ol>
-<p>我们看到本地代码已经成功的提交到远程代码中，至此问题解决。</p>
-<p>方法二</p>
-<p>在创建仓库时，不要勾选生成<code>README.md</code>文件。</p>
-<p>方法三<br>在创建仓库时，如果勾选生成<code>README.md</code>文件，可以复制项目地址，在想提交的项目根目录下，使用命令<code>git clone git@github.com:my/test.git</code>，然后再进行上述的第三步以及之后的操作。</p>
-<h2 id="修改fork的代码之后提交"><a href="#修改fork的代码之后提交" class="headerlink" title="修改fork的代码之后提交"></a>修改fork的代码之后提交</h2><p>如何在<code>github</code>上面将他人的项目拷贝到自己的本地，修改代码之后重新上传到自己的项目主页，同时通知原项目开发者。</p>
-<h3 id="步骤-1"><a href="#步骤-1" class="headerlink" title="步骤"></a>步骤</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git clone &quot;刚才fork下来后项目的地址&quot;</span><br><span class="line">git remote add upstream &quot;项目原地址&quot;</span><br><span class="line">git fetch upstream</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;更新说明&quot;</span><br><span class="line">git push &quot;fork后的地址&quot;</span><br></pre></td></tr></table></figure>
-<h3 id="步骤说明-1"><a href="#步骤说明-1" class="headerlink" title="步骤说明"></a>步骤说明</h3><ol>
-<li>在任意一个<code>github</code>项目上点击<code>Fork</code>到自己的主页</li>
-<li><p><code>clone</code>到本地</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone &apos;刚才fork下来后项目的地址&apos;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在刚才<code>clone</code>下来的文件夹内，添加与原始库的关联，命名为<code>upstream</code>，此地址是原项目开发者的项目主页上的<code>clone</code>的地址，这是专门用来与主开发者保持相同进度的方法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add upstream &quot;项目原地址&quot;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>从原始库中抓取最新的更新，我们需要使用是<code>git fetch upstream</code>命令。这命令会自动选择更改过的代码文件进行更新。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch upstream</span><br></pre></td></tr></table></figure></p>
-<ol start="4">
-<li><p>在本地修改完文件测试完成之后，将代码提交到我们自己的<code>fork</code>出来的项目主页。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m &quot;更新说明&quot;</span><br><span class="line">git push &apos;fork后的地址&apos;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在项目主页代码目录如图所示的位置，点击绿色的按钮，然后就可以比较你的版本和源中代码的差别，然后就可以选择发送一个<code>Pull request</code>给主开发者，添加修改的原因描述。然后就等待主开发者去<code>merge</code>了。</p>
-</li>
-</ol>
-<p><img src="https://s1.ax2x.com/2018/07/02/nkjYB.png" alt="image"></p>
-<h2 id="多人协作"><a href="#多人协作" class="headerlink" title="多人协作"></a>多人协作</h2><h3 id="步骤-2"><a href="#步骤-2" class="headerlink" title="步骤"></a>步骤</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">git clone 项目地址</span><br><span class="line">git checkout -b 分支名</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;更新说明&quot;</span><br><span class="line">git push origin 分支名</span><br><span class="line">git checkout master</span><br><span class="line">git pull origin master</span><br><span class="line">git merge 分支名</span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
-<h3 id="步骤说明-2"><a href="#步骤说明-2" class="headerlink" title="步骤说明"></a>步骤说明</h3><ol>
-<li><p>首先<code>clone</code>代码到本地仓库</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone &apos;项目地址&apos;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>如果分支存在则只切换分支，若不存在则创建并切换到指定分支，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b 分支名</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>如果只是查看分支，可以使用<code>git branch</code>命令，不需带任何参数。</p>
-<ol start="3">
-<li><p>提交对新分支的更改到远程仓库</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m &quot;更新说明&quot;</span><br><span class="line">git push origin 分支名</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用<code>git checkout master</code>切回到<code>master</code>分支</p>
-</li>
-<li>如果<code>master</code>分支有修改，使用<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>更新远程仓库的修改到本地仓库</p>
-<ol start="6">
-<li>合并分支到<code>master</code>，并提交到远程仓库<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git merge 分支名</span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><p>可能会用到的命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">git branch       //不带参数：列出本地已经存在的分支，并且在当前分支的前面用&quot;*&quot;标记</span><br><span class="line">git branch -r    //查看远程版本库分支列表</span><br><span class="line">git branch -a    //查看所有分支列表，包括本地和远程</span><br><span class="line">git branch dev   //创建名为dev的分支，创建分支时需要是最新的环境，创建分支但依然停留在当前分支</span><br><span class="line">git branch -d dev  //删除dev分支，如果在分支中有一些未merge的提交，那么会删除分支失败</span><br><span class="line">git branch -D dev  //强制删除dev分支</span><br><span class="line">git branch -m oldName newName   //给分支重命名</span><br><span class="line"></span><br><span class="line">git checkout 文件名    //放弃单个文件的修改</span><br><span class="line">git checkout .    //放弃当前目录下的修改</span><br></pre></td></tr></table></figure></p>
-<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><p><a href="https://git-scm.com/book/zh/v1/Git-%E5%9F%BA%E7%A1%80-%E6%92%A4%E6%B6%88%E6%93%8D%E4%BD%9C" target="_blank" rel="noopener">Git 基础 - 撤消操作</a></p>
-<p><a href="http://www.runoob.com/linux/linux-vim.html" target="_blank" rel="noopener">vim 基础操作</a></p>
-<p><a href="http://www.runoob.com/git/git-tutorial.html" target="_blank" rel="noopener">Git 教程</a></p>
-<p><a href="https://learngitbranching.js.org" target="_blank" rel="noopener">Learn Git Branching</a></p>
+<p>这时你可能会分别写好3个函数来一一实现这3步</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> 冰箱开门(<span class="params"></span>)</span>&#123;...&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> 冰箱装进(<span class="params">装进什么</span>)</span>&#123;...&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> 冰箱关门(<span class="params"></span>)</span>&#123;...&#125;</span><br></pre></td></tr></table></figure>
+<p>然后依次调用函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">冰箱开门();</span><br><span class="line">冰箱装进(冰淇淋);</span><br><span class="line">冰箱关门();</span><br></pre></td></tr></table></figure>
+<p>你可能为了使函数变得更加灵活实用，改造成<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> 开门(<span class="params">什么开门</span>)</span>&#123;...&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> 装进(<span class="params">什么开门，装进什么</span>)</span>&#123;...&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> 关门(<span class="params">什么关门</span>)</span>&#123;...&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//调用</span></span><br><span class="line">开门(冰箱);</span><br><span class="line">装进(冰箱, 冰淇淋);</span><br><span class="line">关门(冰箱);</span><br></pre></td></tr></table></figure></p>
+<p>这样即使下一次不在冰箱放入冰淇淋，而是在微波炉放入鸡腿，只要调用时传入微波炉和鸡腿参数即可满足需求。</p>
+<ul>
+<li>可以看出:</li>
+</ul>
+<p><strong>面向过程时，强调的是动作，对象只是被传进动作的参数。</strong></p>
+<p>如果是面向对象，写法侧重点就会不一样</p>
+<p>我们会先把开门关门等方法写进<code>构造函数</code>，然后通过构造函数<code>new</code>出对象，new出来的对象就具有了构造函数里面的各种方法和属性。</p>
+<p>何谓构造函数？</p>
+<blockquote>
+<p>构造函数 ，是一种特殊的方法。主要用来在创建对象时初始化对象，即为对象成员变量赋初始值，总与new运算符一起使用在创建对象的语句中。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//javascript</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> 构造函数(<span class="params"></span>)</span>&#123;...&#125;</span><br><span class="line">构造函数.prototype.开门 = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;...&#125;;</span><br><span class="line">构造函数.prototype.装进 = <span class="function"><span class="keyword">function</span> (<span class="params">装进什么</span>)</span>&#123;...&#125;;</span><br><span class="line">构造函数.prototype.关门 = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;...&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//调用</span></span><br><span class="line"><span class="keyword">var</span> 冰箱 = <span class="keyword">new</span> 构造函数();</span><br><span class="line">冰箱.开门();</span><br><span class="line">冰箱.装进(冰淇淋);</span><br><span class="line">冰箱.关门();</span><br></pre></td></tr></table></figure>
+<p><strong>面向对象时，强调的是对象，动作只是被对象执行的方法。</strong></p>
+<p>仔细对比上面的代码，不难发现面向对象的写法比面向过程要复杂。那么我们为什么还要用面向对象呢？</p>
+<p>其实对于同一个需求来说，面向对象和面向过程都能够实现，只是写法上面有差异。</p>
+<p>需求不多时面向过程还能应付过来，但是随着需求、可复用场景的增多与业务逻辑的复杂化，面向过程的写法会越来越难维护，每次需求的变更，我们就要把整个系统通读一遍，找出可用的函数（如果没有就再定义一个），最后依次调用它们。</p>
+<p>面向对象从另一个角度来解决这个问题。它抛弃了函数，把「对象」作为程序的基本单元。</p>
+<p>我们把对象的通用属性和方法整合起来，放进一个构造函数，这样可以提高代码的<strong>复用性</strong>。每次想要一个带有通用属性和方法的对象，只需要用这个构造函数new一次，没有的功能我们单独为new出来的对象添加。</p>
+<p>假如你接手一个面向对象写出来的项目，需求变更时通用的方法和属性往往不需要去管，只需修改指定的对象，维护起来也比较容易。因为<code>继承</code>和<code>封装</code>的特性，修改代码对程序整体的影响将降到最低。</p>
+<p>沿用上面的例子来举例，我们想要冰箱具有自动开门的功能，我们只需为冰箱加入自动开门功能<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//javascript</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> 构造函数(<span class="params"></span>)</span>&#123;...&#125;</span><br><span class="line">构造函数.prototype.开门 = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;...&#125;;</span><br><span class="line">构造函数.prototype.装进 = <span class="function"><span class="keyword">function</span> (<span class="params">装进什么</span>)</span>&#123;...&#125;;</span><br><span class="line">构造函数.prototype.关门 = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;...&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//调用</span></span><br><span class="line"><span class="keyword">var</span> 冰箱 = <span class="keyword">new</span> 构造函数();</span><br><span class="line">冰箱.prototype.自动开门 = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;...&#125;;</span><br><span class="line">冰箱.自动开门();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> 微波炉 = <span class="keyword">new</span> 构造函数();</span><br><span class="line">微波炉.自动开门(); <span class="comment">//报错</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>在上述的例子中，我们把同时具有开门，装进，关门方法的对象<code>抽象</code>为同一个<code>类</code>。</li>
+<li>通过这个类new出来一个新对象(冰箱)，我们称之为<code>实例化</code>。</li>
+<li>可以为冰箱添加自动关门新功能，添加后构造函数(父类)不受影响，这也是<code>继承</code>的概念。</li>
+<li>只有冰箱才能使用这个新功能，微波炉使用会报错，这就是<code>封装</code>的概念。</li>
+<li>此时对放入功能进行改造，作用在冰箱上，冰箱自动使用冷藏功能；作用在微波炉上，微波炉自动使用加热功能，这就是<code>多态</code>的概念。</li>
+</ul>
+<blockquote>
+<p>类（Class）：具有相似属性和行为的一组对象，就称为类。</p>
+</blockquote>
+<blockquote>
+<p>抽象是从众多的事物中抽取出共同的、本质性的特征，而舍弃其非本质的特征。<br>抽象性是指将具有一致的数据结构（属性）和行为（操作）的对象抽象成类。一个类就是这样一种抽象，它反映了与应用有关的重要性质，而忽略其他一些无关内容。任何类的划分都是主观的，但必须与具体的应用有关。</p>
+</blockquote>
+<blockquote>
+<p>实例化是指在面向对象的编程中，通常把用类创建对象的过程称为实例化。</p>
+</blockquote>
+<blockquote>
+<p>继承 是面向对象软件技术当中的一个概念，与多态、封装共为面向对象的三个基本特征。 继承可以使得子类具有父类的属性和方法或者重新定义、追加属性和方法等。</p>
+</blockquote>
+<blockquote>
+<p>封装：隐藏对象的属性和实现细节，仅对外公开接口，控制在程序中属性的读取和修改的访问级别。</p>
+</blockquote>
+<blockquote>
+<p>多态性是指相同的操作或函数、过程可作用于多种类型的对象上并获得不同的结果。不同的对象，收到同一消息可以产生不同的结果，这种现象称为多态性。</p>
+</blockquote>
+<h2 id="面向对象与面向过程的优缺点"><a href="#面向对象与面向过程的优缺点" class="headerlink" title="面向对象与面向过程的优缺点"></a>面向对象与面向过程的优缺点</h2><h3 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h3><blockquote>
+<ul>
+<li>优点：易维护、易复用、易扩展，健壮性好。由于面向对象有封装、继承、多态性的特性，使得应用程序的修改带来的影响更加局部化(低耦合)，因此使用面向对象设计的系统更加灵活、更加易于维护。</li>
+<li>缺点：性能比面向过程低，每次实例化都要占用一定内存空间，但是随着硬件性能的提升，这个缺点变得越来越不明显。</li>
+</ul>
+</blockquote>
+<h3 id="面向过程"><a href="#面向过程" class="headerlink" title="面向过程"></a>面向过程</h3><blockquote>
+<ul>
+<li>优点：面向过程的程序更容易编写，逻辑性更强，性能比面向对象好，更适合底层开发。</li>
+<li>缺点：拓展性，可维护性，复用性都不如面向对象，加上容易出现全局变量污染等问题，因此健壮性也不如面向对象。</li>
+</ul>
+</blockquote>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://baike.baidu.com/item/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/2262089" target="_blank" rel="noopener">百度百科词条–面向对象</a></li>
+<li><a href="https://baike.baidu.com/item/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/24792" target="_blank" rel="noopener">百度百科词条–面向对象程序设计</a></li>
+<li><a href="https://blog.csdn.net/jerry11112/article/details/79027834" target="_blank" rel="noopener">面向对象与面向过程的本质的区别</a></li>
+<li><a href="https://www.zhihu.com/question/27468564/answer/101951302" target="_blank" rel="noopener">如何通俗易懂地举例说明“面向对象”和“面向过程”有什么区别？</a></li>
+</ul>
+<p><img src="https://pic1.zhimg.com/80/664ba37eeee9f4623c06c066867f1d38_hd.jpg" alt="image"></p>
 
       
     </div>
@@ -438,13 +441,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/07/02/Git与Github常用命令/">Git与Github常用命令</a></p>
+        <p><span>本文标题:</span><a href="/2018/07/16/面向对象与面向过程/">面向对象与面向过程</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Sanakey</a></p>
-        <p><span>发布时间:</span>2018-07-02, 11:43:27</p>
-        <p><span>最后更新:</span>2018-07-08, 22:49:26</p>
+        <p><span>发布时间:</span>2018-07-16, 12:36:16</p>
+        <p><span>最后更新:</span>2018-07-19, 22:28:39</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/07/02/Git与Github常用命令/" title="Git与Github常用命令">https://sanakey.github.io/2018/07/02/Git与Github常用命令/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://sanakey.github.io/2018/07/02/Git与Github常用命令/　　作者: Sanakey" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/07/16/面向对象与面向过程/" title="面向对象与面向过程">https://sanakey.github.io/2018/07/16/面向对象与面向过程/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://sanakey.github.io/2018/07/16/面向对象与面向过程/　　作者: Sanakey" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -456,16 +459,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/07/03/微信小程序-自定义tabBar组件/">
-                    微信小程序--自定义tabBar组件
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/07/01/微信小程序入门-事件/">
-                    微信小程序入门--事件
+                <a href="/2018/07/14/你不知道的JavaScript-对象/">
+                    你不知道的JavaScript--对象
                 </a>
             </div>
         
@@ -507,7 +504,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#托管自己编写的代码"><span class="toc-number">1.</span> <span class="toc-text">托管自己编写的代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤"><span class="toc-number">1.1.</span> <span class="toc-text">步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤说明"><span class="toc-number">1.2.</span> <span class="toc-text">步骤说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可能出现的错误"><span class="toc-number">1.3.</span> <span class="toc-text">可能出现的错误</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#一、错误信息"><span class="toc-number">1.3.1.</span> <span class="toc-text">一、错误信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#二、问题分析"><span class="toc-number">1.3.2.</span> <span class="toc-text">二、问题分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#三、解决问题"><span class="toc-number">1.3.3.</span> <span class="toc-text">三、解决问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改fork的代码之后提交"><span class="toc-number">2.</span> <span class="toc-text">修改fork的代码之后提交</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤-1"><span class="toc-number">2.1.</span> <span class="toc-text">步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤说明-1"><span class="toc-number">2.2.</span> <span class="toc-text">步骤说明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多人协作"><span class="toc-number">3.</span> <span class="toc-text">多人协作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤-2"><span class="toc-number">3.1.</span> <span class="toc-text">步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤说明-2"><span class="toc-number">3.2.</span> <span class="toc-text">步骤说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#补充"><span class="toc-number">3.3.</span> <span class="toc-text">补充</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#附录"><span class="toc-number">4.</span> <span class="toc-text">附录</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#面向对象与面向过程的区别"><span class="toc-number">2.</span> <span class="toc-text">面向对象与面向过程的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#面向对象与面向过程的优缺点"><span class="toc-number">3.</span> <span class="toc-text">面向对象与面向过程的优缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#面向对象"><span class="toc-number">3.1.</span> <span class="toc-text">面向对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#面向过程"><span class="toc-number">3.2.</span> <span class="toc-text">面向过程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">4.</span> <span class="toc-text">参考</span></a></li></ol>
         
     </div>
     <style>
@@ -543,7 +540,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Git与Github常用命令　| Sanakey的小站　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"面向对象与面向过程　| Sanakey的小站　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -567,7 +564,7 @@
                 clientID:  '4d79ef314d7eecff6c86',
                 clientSecret: '69414bfea90934424011146006786eca04c840d9',
                 repo: 'sanakey.github.io',
-                id: 'Mon Jul 02 2018 11:43:27 GMT+0800',
+                id: 'Mon Jul 16 2018 12:36:16 GMT+0800',
                 owner: 'Sanakey',
                 admin: 'Sanakey',
                 distractionFreeMode: 'true'
@@ -586,15 +583,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/07/03/微信小程序-自定义tabBar组件/" title="上一篇: 微信小程序--自定义tabBar组件">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/07/01/微信小程序入门-事件/" title="下一篇: 微信小程序入门--事件">
+            <a href="/2018/07/14/你不知道的JavaScript-对象/" title="下一篇: 你不知道的JavaScript--对象">
                 <i class="fa fa-angle-right"></i>
             </a>
         
