@@ -4,18 +4,18 @@
 
     
   <url>
-    <loc>https://sanakey.github.io/2018/07/19/ES6%E5%B8%B8%E7%94%A8%E6%96%B0%E7%89%B9%E6%80%A7%E4%B8%80/</loc>
-    <lastmod>2018-07-21T12:27:19.338Z</lastmod>
+    <loc>https://sanakey.github.io/2018/07/16/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%8E%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B/</loc>
+    <lastmod>2018-07-23T14:20:12.857Z</lastmod>
     <data>
         <display>
-        <title>ES6常用新特性(一)</title>
-        <pubTime>2018-07-19T08:12:35.000Z</pubTime>
+        <title>面向对象与面向过程</title>
+        <pubTime>2018-07-16T04:36:16.000Z</pubTime>
         
         <tag>JavaScript</tag>
          
         <tag>笔记</tag>
          
-        <tag>ES6+</tag>
+        <tag>对象</tag>
          
          
            
@@ -28,18 +28,18 @@
 
     
   <url>
-    <loc>https://sanakey.github.io/2018/07/16/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%8E%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B/</loc>
-    <lastmod>2018-07-19T14:38:49.649Z</lastmod>
+    <loc>https://sanakey.github.io/2018/07/19/ES6%E5%B8%B8%E7%94%A8%E6%96%B0%E7%89%B9%E6%80%A7%E4%B8%80/</loc>
+    <lastmod>2018-07-21T12:27:19.338Z</lastmod>
     <data>
         <display>
-        <title>面向对象与面向过程</title>
-        <pubTime>2018-07-16T04:36:16.000Z</pubTime>
+        <title>ES6常用新特性(一)</title>
+        <pubTime>2018-07-19T08:12:35.000Z</pubTime>
         
         <tag>JavaScript</tag>
          
         <tag>笔记</tag>
          
-        <tag>对象</tag>
+        <tag>ES6+</tag>
          
          
            
@@ -184,9 +184,9 @@
          
         <tag>微信小程序</tag>
          
-        <tag>Demo</tag>
-         
         <tag>小程序</tag>
+         
+        <tag>Demo</tag>
          
          
            
@@ -234,9 +234,9 @@
          
         <tag>微信小程序</tag>
          
-        <tag>Demo</tag>
-         
         <tag>小程序</tag>
+         
+        <tag>Demo</tag>
          
          
            
@@ -256,9 +256,9 @@
         <title>Github Pages+Hexo从零开始的免费建站教程</title>
         <pubTime>2018-06-26T06:00:08.000Z</pubTime>
         
-        <tag>github</tag>
-         
         <tag>hexo</tag>
+         
+        <tag>github</tag>
          
         <tag>博客</tag>
          
