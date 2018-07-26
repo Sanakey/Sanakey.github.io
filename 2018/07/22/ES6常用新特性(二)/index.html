@@ -14,21 +14,19 @@
 <meta name="author" content="Sanakey" />
 
 
-    
-    
 
-
-<meta name="description" content="前端,博客,个人小站">
-<meta name="keywords" content="前端,博客,HTML5,CSS3,JavaScript,微信小程序">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Sanakey的小站">
-<meta property="og:url" content="https://sanakey.github.io/index.html">
+<meta name="description" content="前言ES6增加了不少新特性，下面继续整理了一下比较常用的新特性。  Set Map Promise Class Module  Set Set类似于数组，但是成员的值都是唯一的，没有重复的值。  Set实例的增删改查方法  add(value)：添加某个值，返回 Set 结构本身。 delete(value)：删除某个值，返回一个布尔值，表示删除是否成功。 has(value)：返回一个布尔值，表">
+<meta name="keywords" content="JavaScript,笔记,ES6+">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6常用新特性(一)">
+<meta property="og:url" content="https://sanakey.github.io/2018/07/22/ES6常用新特性(二)/index.html">
 <meta property="og:site_name" content="Sanakey的小站">
-<meta property="og:description" content="前端,博客,个人小站">
+<meta property="og:description" content="前言ES6增加了不少新特性，下面继续整理了一下比较常用的新特性。  Set Map Promise Class Module  Set Set类似于数组，但是成员的值都是唯一的，没有重复的值。  Set实例的增删改查方法  add(value)：添加某个值，返回 Set 结构本身。 delete(value)：删除某个值，返回一个布尔值，表示删除是否成功。 has(value)：返回一个布尔值，表">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-07-26T09:33:24.034Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sanakey的小站">
-<meta name="twitter:description" content="前端,博客,个人小站">
+<meta name="twitter:title" content="ES6常用新特性(一)">
+<meta name="twitter:description" content="前言ES6增加了不少新特性，下面继续整理了一下比较常用的新特性。  Set Map Promise Class Module  Set Set类似于数组，但是成员的值都是唯一的，没有重复的值。  Set实例的增删改查方法  add(value)：添加某个值，返回 Set 结构本身。 delete(value)：删除某个值，返回一个布尔值，表示删除是否成功。 has(value)：返回一个布尔值，表">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,13 +54,11 @@
 <link rel="stylesheet" href="/css/style.css">
 
 
-    <style> .article { opacity: 0;} </style>
-
 
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Sanakey的小站</title>
+<title>ES6常用新特性(一) | Sanakey的小站</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -71,8 +67,8 @@
     var yiliaConfig = {
         fancybox: true,
         animate: true,
-        isHome: true,
-        isPost: false,
+        isHome: false,
+        isPost: true,
         isArchive: false,
         isTag: false,
         isCategory: false,
@@ -301,9 +297,7 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap">
-  
-    <article id="post-ES6常用新特性(二)" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-ES6常用新特性(二)" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2018/07/22/ES6常用新特性(二)/" class="article-date">
@@ -321,12 +315,27 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/22/ES6常用新特性(二)/">ES6常用新特性(一)</a>
+    <h1 class="article-title" itemprop="name">
+      ES6常用新特性(一)
     </h1>
   
 
       </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/学习笔记/">学习笔记</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6+</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
@@ -443,326 +452,172 @@
       
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/学习笔记/">学习笔记</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6+</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
   </div>
   
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-ES6常用新特性一" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/07/19/ES6常用新特性一/" class="article-date">
-      <time datetime="2018-07-19T08:12:35.000Z" itemprop="datePublished">2018-07-19</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
     
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/19/ES6常用新特性一/">ES6常用新特性(一)</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ES6增加了不少新特性，灵活运用可以大幅提高工作效率，下面总结了一下比较常用的新特性。</p>
-<ul>
-<li>let const</li>
-<li>解构赋值</li>
-<li>模板字符串</li>
-<li>数组拓展</li>
-<li>箭头函数</li>
-<li>对象拓展</li>
-</ul>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/学习笔记/">学习笔记</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6+</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2018/07/19/ES6常用新特性一/#more">more >></a>
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2018/07/22/ES6常用新特性(二)/">ES6常用新特性(一)</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Sanakey</a></p>
+        <p><span>发布时间:</span>2018-07-22, 16:12:35</p>
+        <p><span>最后更新:</span>2018-07-26, 17:33:24</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/07/22/ES6常用新特性(二)/" title="ES6常用新特性(一)">https://sanakey.github.io/2018/07/22/ES6常用新特性(二)/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://sanakey.github.io/2018/07/22/ES6常用新特性(二)/　　作者: Sanakey" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-面向对象与面向过程" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/07/16/面向对象与面向过程/" class="article-date">
-      <time datetime="2018-07-16T04:36:16.000Z" itemprop="datePublished">2018-07-16</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/16/面向对象与面向过程/">面向对象与面向过程</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>作为编程初学者，经常会听到人们说面向对象编程，而自己平常写的代码都是面向过程的，根本不懂：面向对象到底是什么东西，有什么好处，我们为什么要使用面向对象编程以及什么时候使用面向对象编程等一系列问题。看完这篇文章，你或许会有所体会。<br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/学习笔记/">学习笔记</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/对象/">对象</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2018/07/16/面向对象与面向过程/#more">more >></a>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
         </p>
-      
-      <div class="clearfix"></div>
     </div>
-    
-  </div>
-  
-  
-</article>
 
 
 
-
-
-
-
-
-
-  
-    <article id="post-你不知道的JavaScript-对象" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/07/14/你不知道的JavaScript-对象/" class="article-date">
-      <time datetime="2018-07-14T06:13:25.000Z" itemprop="datePublished">2018-07-14</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+    <nav id="article-nav">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/14/你不知道的JavaScript-对象/">你不知道的JavaScript--对象</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>继续整理&lt;你不知道的JavaScript&gt;读书笔记，本文是对象部分。<br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/读书笔记/">读书笔记</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/对象/">对象</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2018/07/14/你不知道的JavaScript-对象/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-你不知道的JavaScript-this解析" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/07/13/你不知道的JavaScript-this解析/" class="article-date">
-      <time datetime="2018-07-13T01:13:34.000Z" itemprop="datePublished">2018-07-13</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/13/你不知道的JavaScript-this解析/">你不知道的JavaScript--this解析</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><code>this</code>是<code>JavaScript</code>里面老生常谈的问题，因为其诡异的机制，基本每个初学者都会迷惑于<code>this</code>的指向问题，而<code>this</code>又是面向对象编程的基础，所以弄明白<code>this</code>的指向是提高自己编程能力的重要一环。《你不知道的JavaScript》上册第二部分详细讲解了<code>this</code>的几种指向问题，如果你还不懂<code>this</code>的指向，下面的文章也许能帮你解决这个难题。</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/读书笔记/">读书笔记</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/this/">this</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2018/07/13/你不知道的JavaScript-this解析/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2018/07/19/ES6常用新特性一/">
+                    ES6常用新特性(一)
+                </a>
+            </div>
+        
     </nav>
+
   
+  
+    
+<div style="padding: 0; margin: 20px auto; width: 90%; text-align: center;">
+    <br>
+    <div>感谢打赏，错误之处欢迎指正交流(`・ω・´) !~~</div>
+    <br>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+        <div class="btn btn-pay">打赏</div>
+    </button>
+    <br>
+    <br>
+    <div id="QR" style="display: none;">
+        
+        <div id="wechat" style="display: inline-block;">
+            <img id="wechat_qr" src="/img/233.gif" alt="Sanakey WeChat Pay"/>
+            <p>微信打赏</p>
+        </div>
+        
+        
+        <div id="alipay" style="display: inline-block">
+            <img id="alipay_qr" src="/img/333.gif" alt="Sanakey Alipay"/>
+            <p>支付宝打赏</p>
+        </div>
+        
+        <br>
+        <br>
+    </div>
+</div>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Set"><span class="toc-number">2.</span> <span class="toc-text">Set</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Set实例的增删改查方法"><span class="toc-number">2.1.</span> <span class="toc-text">Set实例的增删改查方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Set结构的实例有四个遍历方法，可以用于遍历成员。"><span class="toc-number">2.2.</span> <span class="toc-text">Set结构的实例有四个遍历方法，可以用于遍历成员。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Map"><span class="toc-number">3.</span> <span class="toc-text">Map</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Map-结构的实例有以下属性和操作方法。"><span class="toc-number">3.1.</span> <span class="toc-text">Map 结构的实例有以下属性和操作方法。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Map-Set-Array-Object数据结构对比"><span class="toc-number">3.2.</span> <span class="toc-text">Map Set Array Object数据结构对比</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Promise"><span class="toc-number">4.</span> <span class="toc-text">Promise</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#catch"><span class="toc-number">4.1.</span> <span class="toc-text">catch</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#all"><span class="toc-number">4.2.</span> <span class="toc-text">all</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#race"><span class="toc-number">4.3.</span> <span class="toc-text">race</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Class"><span class="toc-number">5.</span> <span class="toc-text">Class</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Module模块化"><span class="toc-number">6.</span> <span class="toc-text">Module模块化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">7.</span> <span class="toc-text">参考</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-4 i,
+        .toc-level-4 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"ES6常用新特性(一)　| Sanakey的小站　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+        <section class="gitalk" id="comments">
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"></link>
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <div id="gitalk-container"></div>
+    <script>
+        var loadComment = function() {
+            var gitalk = new Gitalk({
+                clientID:  '4d79ef314d7eecff6c86',
+                clientSecret: '69414bfea90934424011146006786eca04c840d9',
+                repo: 'sanakey.github.io',
+                id: 'Sun Jul 22 2018 16:12:35 GMT+0800',
+                owner: 'Sanakey',
+                admin: 'Sanakey',
+                distractionFreeMode: 'true'
+            })
+            gitalk.render('gitalk-container')
+        }
+    </script>
+    
+    <script> loadComment(); </script>
+
+</section>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2018/07/19/ES6常用新特性一/" title="下一篇: ES6常用新特性(一)">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/07/22/ES6常用新特性(二)/">ES6常用新特性(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/19/ES6常用新特性一/">ES6常用新特性(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/16/面向对象与面向过程/">面向对象与面向过程</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/14/你不知道的JavaScript-对象/">你不知道的JavaScript--对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/13/你不知道的JavaScript-this解析/">你不知道的JavaScript--this解析</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/08/你不知道的JavaScript-闭包/">你不知道的JavaScript--闭包</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/06/你不知道的JavaScript-作用域/">你不知道的JavaScript--作用域</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/03/微信小程序-自定义tabBar组件/">微信小程序--自定义tabBar组件</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/02/Git与Github常用命令/">Git与Github常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/01/微信小程序入门-事件/">微信小程序入门--事件</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/27/微信小程序入门-二级菜单/">微信小程序入门--二级菜单</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/26/Github-Pages-Hexo从零开始的免费建站教程/">Github Pages+Hexo从零开始的免费建站教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/25/My-First-Post/">My First Post</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/25/hello-world/">Hello World</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">

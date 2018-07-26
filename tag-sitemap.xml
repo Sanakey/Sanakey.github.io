@@ -2,27 +2,6 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
-        <loc>https://sanakey.github.io/tags/hexo/</loc>
-        <lastmod>2018-06-30T02:06:44.136Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://sanakey.github.io/tags/%E5%8D%9A%E5%AE%A2/</loc>
-        <lastmod>2018-06-30T02:06:44.136Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://sanakey.github.io/tags/%E5%BB%BA%E7%AB%99/</loc>
-        <lastmod>2018-06-30T02:06:44.136Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://sanakey.github.io/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/</loc>
         <lastmod>2018-07-03T09:28:36.384Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -46,13 +25,6 @@
     <url>
         <loc>https://sanakey.github.io/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F/</loc>
         <lastmod>2018-07-08T10:34:49.520Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://sanakey.github.io/tags/github/</loc>
-        <lastmod>2018-07-08T14:49:26.560Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -86,29 +58,57 @@
     </url>
 
     <url>
-        <loc>https://sanakey.github.io/tags/ES6/</loc>
-        <lastmod>2018-07-21T12:27:19.338Z</lastmod>
+        <loc>https://sanakey.github.io/tags/%E5%AF%B9%E8%B1%A1/</loc>
+        <lastmod>2018-07-23T14:20:12.857Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://sanakey.github.io/tags/hexo/</loc>
+        <lastmod>2018-07-23T15:07:49.598Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://sanakey.github.io/tags/github/</loc>
+        <lastmod>2018-07-23T15:07:49.598Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://sanakey.github.io/tags/%E5%8D%9A%E5%AE%A2/</loc>
+        <lastmod>2018-07-23T15:07:49.598Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://sanakey.github.io/tags/%E5%BB%BA%E7%AB%99/</loc>
+        <lastmod>2018-07-23T15:07:49.598Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://sanakey.github.io/tags/JavaScript/</loc>
-        <lastmod>2018-07-23T14:20:12.857Z</lastmod>
+        <lastmod>2018-07-26T09:33:24.034Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://sanakey.github.io/tags/%E7%AC%94%E8%AE%B0/</loc>
-        <lastmod>2018-07-23T14:20:12.857Z</lastmod>
+        <lastmod>2018-07-26T09:33:24.034Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://sanakey.github.io/tags/%E5%AF%B9%E8%B1%A1/</loc>
-        <lastmod>2018-07-23T14:20:12.857Z</lastmod>
+        <loc>https://sanakey.github.io/tags/ES6/</loc>
+        <lastmod>2018-07-26T09:33:24.034Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

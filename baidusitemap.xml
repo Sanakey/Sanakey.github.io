@@ -4,6 +4,53 @@
 
     
   <url>
+    <loc>https://sanakey.github.io/2018/07/22/ES6%E5%B8%B8%E7%94%A8%E6%96%B0%E7%89%B9%E6%80%A7(%E4%BA%8C)/</loc>
+    <lastmod>2018-07-26T09:33:24.034Z</lastmod>
+    <data>
+        <display>
+        <title>ES6常用新特性(一)</title>
+        <pubTime>2018-07-22T08:12:35.000Z</pubTime>
+        
+        <tag>JavaScript</tag>
+         
+        <tag>笔记</tag>
+         
+        <tag>ES6+</tag>
+         
+         
+           
+             
+              <breadCrumb title="学习笔记" url="https://sanakey.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://sanakey.github.io/2018/06/26/Github-Pages-Hexo%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E5%85%8D%E8%B4%B9%E5%BB%BA%E7%AB%99%E6%95%99%E7%A8%8B/</loc>
+    <lastmod>2018-07-23T15:07:49.598Z</lastmod>
+    <data>
+        <display>
+        <title>Github Pages+Hexo从零开始的免费建站教程</title>
+        <pubTime>2018-06-26T06:00:08.000Z</pubTime>
+        
+        <tag>hexo</tag>
+         
+        <tag>github</tag>
+         
+        <tag>博客</tag>
+         
+        <tag>建站</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://sanakey.github.io/2018/07/16/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%8E%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B/</loc>
     <lastmod>2018-07-23T14:20:12.857Z</lastmod>
     <data>
@@ -243,29 +290,6 @@
              
               <breadCrumb title="微信小程序" url="https://sanakey.github.io/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://sanakey.github.io/2018/06/26/Github-Pages-Hexo%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E5%85%8D%E8%B4%B9%E5%BB%BA%E7%AB%99%E6%95%99%E7%A8%8B/</loc>
-    <lastmod>2018-06-30T02:06:44.136Z</lastmod>
-    <data>
-        <display>
-        <title>Github Pages+Hexo从零开始的免费建站教程</title>
-        <pubTime>2018-06-26T06:00:08.000Z</pubTime>
-        
-        <tag>hexo</tag>
-         
-        <tag>github</tag>
-         
-        <tag>博客</tag>
-         
-        <tag>建站</tag>
-         
-         
-           
         </display>
     </data>
     </url>
