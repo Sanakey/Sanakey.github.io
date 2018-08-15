@@ -93,22 +93,43 @@
     </url>
 
     <url>
-        <loc>https://sanakey.github.io/tags/JavaScript/</loc>
-        <lastmod>2018-07-26T09:46:36.440Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://sanakey.github.io/tags/%E7%AC%94%E8%AE%B0/</loc>
-        <lastmod>2018-07-26T09:46:36.440Z</lastmod>
+        <lastmod>2018-07-30T02:16:37.882Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://sanakey.github.io/tags/ES6/</loc>
-        <lastmod>2018-07-26T09:46:36.440Z</lastmod>
+        <lastmod>2018-07-30T02:16:37.882Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://sanakey.github.io/tags/JavaScript/</loc>
+        <lastmod>2018-08-15T14:38:04.658Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://sanakey.github.io/tags/Vue/</loc>
+        <lastmod>2018-08-15T14:38:04.658Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://sanakey.github.io/tags/Vuejs/</loc>
+        <lastmod>2018-08-15T14:38:04.658Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://sanakey.github.io/tags/Vuex/</loc>
+        <lastmod>2018-08-15T14:38:04.658Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

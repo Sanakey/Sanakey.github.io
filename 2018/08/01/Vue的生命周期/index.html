@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="Sanakey" />
+
+
+
+<meta name="description" content="前言 Vue实例有一个完整的生命周期，也就是从开始创建、初始化数据、编译模板、挂载Dom、渲染→更新→渲染、卸载等一系列过程，我们称这是Vue的生命周期。通俗说就是Vue实例从创建到销毁的过程，就是生命周期。">
+<meta name="keywords" content="JavaScript,Vue,Vuejs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue的生命周期">
+<meta property="og:url" content="https://sanakey.github.io/2018/08/01/Vue的生命周期/index.html">
+<meta property="og:site_name" content="Sanakey的小站">
+<meta property="og:description" content="前言 Vue实例有一个完整的生命周期，也就是从开始创建、初始化数据、编译模板、挂载Dom、渲染→更新→渲染、卸载等一系列过程，我们称这是Vue的生命周期。通俗说就是Vue实例从创建到销毁的过程，就是生命周期。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://s1.ax2x.com/2018/08/15/55qXHh.png">
+<meta property="og:image" content="https://s1.ax2x.com/2018/08/15/55qwJR.png">
+<meta property="og:updated_time" content="2018-08-15T08:45:44.698Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vue的生命周期">
+<meta name="twitter:description" content="前言 Vue实例有一个完整的生命周期，也就是从开始创建、初始化数据、编译模板、挂载Dom、渲染→更新→渲染、卸载等一系列过程，我们称这是Vue的生命周期。通俗说就是Vue实例从创建到销毁的过程，就是生命周期。">
+<meta name="twitter:image" content="https://s1.ax2x.com/2018/08/15/55qXHh.png">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Sanakey的小站" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/img/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>Vue的生命周期 | Sanakey的小站</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.jpg" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Sanakey</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">种一棵树最好的时间是十年前，其次是现在!慢慢来，往往比较快~</p>
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                            <li><a href="/collection/">收藏</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:sanakey@qq.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" href="https://weibo.com/Sanakey" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/Sanakey" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa 网易云音乐" href="https://music.163.com/#/user/home?id=97522164" title="网易云音乐"></a>
+                            
+                                <a class="fa bilibili" href="https://space.bilibili.com/2016622/#/" title="bilibili"></a>
+                            
+                                <a class="fa Twitter" href="https://twitter.com/sanakeysora" title="Twitter"></a>
+                            
+                                <a class="fa QQ" href="/714737083" title="QQ"></a>
+                            
+                                <a class="fa Steam" href="https://steamcommunity.com/id/Sanakey/" title="Steam"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Demo/">Demo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6+</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vuejs/">Vuejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vuex/">Vuex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/this/">this</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/作用域/">作用域</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/建站/">建站</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/闭包/">闭包</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">前端路上的小白</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Sanakey</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.jpg" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Sanakey</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">种一棵树最好的时间是十年前，其次是现在!慢慢来，往往比较快~</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                    <li><a href="/collection/">收藏</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:sanakey@qq.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="https://weibo.com/Sanakey" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/Sanakey" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa 网易云音乐" target="_blank" href="https://music.163.com/#/user/home?id=97522164" title="网易云音乐"></a>
+                            
+                                <a class="fa bilibili" target="_blank" href="https://space.bilibili.com/2016622/#/" title="bilibili"></a>
+                            
+                                <a class="fa Twitter" target="_blank" href="https://twitter.com/sanakeysora" title="Twitter"></a>
+                            
+                                <a class="fa QQ" target="_blank" href="/714737083" title="QQ"></a>
+                            
+                                <a class="fa Steam" target="_blank" href="https://steamcommunity.com/id/Sanakey/" title="Steam"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-Vue的生命周期" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/08/01/Vue的生命周期/" class="article-date">
+      <time datetime="2018-08-01T07:33:19.000Z" itemprop="datePublished">2018-08-01</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Vue的生命周期
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Vuejs/">Vuejs</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vuejs/">Vuejs</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>Vue实例有一个完整的生命周期，也就是从开始创建、初始化数据、编译模板、挂载Dom、渲染→更新→渲染、卸载等一系列过程，我们称这是Vue的生命周期。通俗说就是Vue实例从创建到销毁的过程，就是生命周期。 </p>
+</blockquote>
+<a id="more"></a>
+<h2 id="Vue生命周期图解"><a href="#Vue生命周期图解" class="headerlink" title="Vue生命周期图解"></a>Vue生命周期图解</h2><p><img src="https://s1.ax2x.com/2018/08/15/55qXHh.png" alt="vue生命周期图解"></p>
+<h2 id="Vue2-x中的生命周期"><a href="#Vue2-x中的生命周期" class="headerlink" title="Vue2.x中的生命周期"></a><a href="https://cn.vuejs.org/v2/api/#%E9%80%89%E9%A1%B9-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90" target="_blank" rel="noopener">Vue2.x中的生命周期</a></h2><table>
+<thead>
+<tr>
+<th>生命周期钩子</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>beforeCreate</td>
+<td style="text-align:left">组件实例刚被创建，组件属性计算之前，如data属性等<br>官网解释：在实例初始化之后，数据观测 (data observer) 和 event/watcher 事件配置之前被调用。</td>
+</tr>
+<tr>
+<td>created</td>
+<td style="text-align:left">组件实例创建完成，属性已绑定，但DOM还未生成，<code>$el</code>属性还不存在<br>官网解释：在实例创建完成后被立即调用。在这一步，实例已完成以下的配置：数据观测 (data observer)，属性和方法的运算，watch/event 事件回调。然而，挂载阶段还没开始，<code>$el</code> 属性目前不可见。</td>
+</tr>
+<tr>
+<td>beforeMount</td>
+<td style="text-align:left">模板编译/挂载之前<br>官网解释：在挂载开始之前被调用：相关的<code>render</code>函数首次被调用。 <strong>该钩子在服务器端渲染期间不被调用。</strong></td>
+</tr>
+<tr>
+<td>mounted</td>
+<td style="text-align:left">模板编译/挂载之后<br> 官网解释：<code>el</code> 被新创建的 <code>vm.$el</code> 替换，并挂载到实例上去之后调用该钩子。 <strong>该钩子在服务器端渲染期间不被调用。</strong></td>
+</tr>
+<tr>
+<td>beforeUpdate</td>
+<td style="text-align:left">组件更新之前<br>官网解释：数据更新时调用，发生在虚拟 DOM 重新渲染和打补丁之前。 你可以在这个钩子中进一步地更改状态，这不会触发附加的重渲染过程。 <strong>该钩子在服务器端渲染期间不被调用，因为只有初次渲染会在服务端进行。</strong></td>
+</tr>
+<tr>
+<td>updated</td>
+<td style="text-align:left">组件更新之后<br>官网解释：由于数据更改导致的虚拟 DOM 重新渲染和打补丁，在这之后会调用该钩子。 <strong>该钩子在服务器端渲染期间不被调用。</strong></td>
+</tr>
+<tr>
+<td>activated</td>
+<td style="text-align:left"><code>keep-alive</code>组件激活时调用。  <strong>该钩子在服务器端渲染期间不被调用。</strong></td>
+</tr>
+<tr>
+<td>deactivated</td>
+<td style="text-align:left"><code>keep-alive</code>组件停用时调用。   <strong>该钩子在服务器端渲染期间不被调用。</strong></td>
+</tr>
+<tr>
+<td>beforeDestroy</td>
+<td style="text-align:left">组件销毁前调用<br>官网解释：在这一步，实例仍然完全可用。 <strong>该钩子在服务器端渲染期间不被调用。</strong></td>
+</tr>
+<tr>
+<td>destroyed</td>
+<td style="text-align:left">组件销毁后调用 <br>官网解释：调用后，Vue 实例指示的所有东西都会解绑定，所有的事件监听器会被移除，所有的子实例也会被销毁。 该钩子在服务器端渲染期间不被调用。 <strong>该钩子在服务器端渲染期间不被调用。</strong></td>
+</tr>
+<tr>
+<td>errorCaptured</td>
+<td style="text-align:left">2.5.0+ 新增。当捕获一个来自子孙组件的错误时被调用。此钩子会收到三个参数：错误对象、发生错误的组件实例以及一个包含错误来源信息的字符串。此钩子可以返回 <code>false</code> 以阻止该错误继续向上传播。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="代码实例"><a href="#代码实例" class="headerlink" title="代码实例"></a>代码实例</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">   <span class="keyword">let</span> vm = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">        el: <span class="string">"#app"</span>,</span></span><br><span class="line"><span class="undefined">        data: &#123;</span></span><br><span class="line"><span class="javascript">            test: <span class="string">"hello world"</span></span></span><br><span class="line"><span class="undefined">        &#125;,</span></span><br><span class="line"><span class="xml">        template: "<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">'test'</span> <span class="attr">ref</span>=<span class="string">'test'</span>&gt;</span>&#123;&#123;test&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span>",</span></span><br><span class="line"><span class="javascript">        beforeCreate: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="built_in">console</span>.log(<span class="string">"此时为beforeCreate"</span>);</span></span><br><span class="line"><span class="undefined">        &#125;,</span></span><br><span class="line"><span class="javascript">        created: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="built_in">console</span>.log(<span class="string">"此时为created，this.$refs.test为"</span>,<span class="keyword">this</span>.$refs.test);</span></span><br><span class="line"><span class="javascript">             <span class="comment">// undefined</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">let</span> test = <span class="built_in">document</span>.getElementById(<span class="string">"test"</span>);</span></span><br><span class="line"><span class="javascript">            <span class="built_in">console</span>.log(test.innerHTML);</span></span><br><span class="line"><span class="javascript">            <span class="comment">// 报错</span></span></span><br><span class="line"><span class="undefined">        &#125;,</span></span><br><span class="line"><span class="javascript">        beforeMount: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="built_in">console</span>.log(<span class="string">"此时为beforeMount，this.$refs.test为"</span>,<span class="keyword">this</span>.$refs.test);</span></span><br><span class="line"><span class="javascript">            <span class="comment">// undefined</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">let</span> test = <span class="built_in">document</span>.getElementById(<span class="string">"test"</span>);</span></span><br><span class="line"><span class="javascript">            <span class="built_in">console</span>.log(test.innerHTML);</span></span><br><span class="line"><span class="javascript">            <span class="comment">// 报错</span></span></span><br><span class="line"><span class="undefined">        &#125;,</span></span><br><span class="line"><span class="javascript">        mounted: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="built_in">console</span>.log(<span class="string">"此时为mounted，this.$refs.test为"</span>,<span class="keyword">this</span>.$refs.test);</span></span><br><span class="line"><span class="xml">             // <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">'test'</span>&gt;</span>hello world<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">let</span> test = <span class="built_in">document</span>.getElementById(<span class="string">"test"</span>);</span></span><br><span class="line"><span class="javascript">            <span class="built_in">console</span>.log(test.innerHTML);</span></span><br><span class="line"><span class="javascript">            <span class="comment">// hello world</span></span></span><br><span class="line"><span class="undefined">        &#125;,</span></span><br><span class="line"><span class="javascript">        beforeUpdate: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="built_in">console</span>.log(<span class="string">"此时为beforeUpdate，this.$refs.test为"</span>,<span class="keyword">this</span>.$refs.test);</span></span><br><span class="line"><span class="xml">            // <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">'test'</span>&gt;</span>hi<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">let</span> test = <span class="built_in">document</span>.getElementById(<span class="string">"test"</span>);</span></span><br><span class="line"><span class="javascript">            <span class="built_in">console</span>.log(test.innerHTML);</span></span><br><span class="line"><span class="javascript">            <span class="comment">// hello world</span></span></span><br><span class="line"><span class="undefined">        &#125;,</span></span><br><span class="line"><span class="javascript">        updated: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="built_in">console</span>.log(<span class="string">"此时为updated，this.$refs.test为"</span>,<span class="keyword">this</span>.$refs.test);</span></span><br><span class="line"><span class="xml">            // <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">'test'</span>&gt;</span>hi<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">let</span> test = <span class="built_in">document</span>.getElementById(<span class="string">"test"</span>);</span></span><br><span class="line"><span class="javascript">            <span class="built_in">console</span>.log(test.innerHTML);</span></span><br><span class="line"><span class="javascript">            <span class="comment">// hi</span></span></span><br><span class="line"><span class="undefined">        &#125;,</span></span><br><span class="line"><span class="javascript">         beforeDestroy: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="built_in">console</span>.log(<span class="string">"此时为beforeDestroy，this.$refs.test为"</span>,<span class="keyword">this</span>.$refs.test);</span></span><br><span class="line"><span class="xml">            // <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">'test'</span>&gt;</span>hello world<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">let</span> test = <span class="built_in">document</span>.getElementById(<span class="string">"test"</span>);</span></span><br><span class="line"><span class="javascript">            <span class="built_in">console</span>.log(test.innerHTML);</span></span><br><span class="line"><span class="javascript">             <span class="comment">//hi</span></span></span><br><span class="line"><span class="undefined">        &#125;,</span></span><br><span class="line"><span class="javascript">        destroyed: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="built_in">console</span>.log(<span class="string">"此时为destroyed，this.$refs.test为"</span>,<span class="keyword">this</span>.$refs.test);</span></span><br><span class="line"><span class="javascript">            <span class="comment">// undefined</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">let</span> test = <span class="built_in">document</span>.getElementById(<span class="string">"test"</span>);</span></span><br><span class="line"><span class="javascript">            <span class="built_in">console</span>.log(test.innerHTML);</span></span><br><span class="line"><span class="javascript">            <span class="comment">//hi</span></span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    &#125;)</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>打印结果如图</p>
+<p><img src="https://s1.ax2x.com/2018/08/15/55qwJR.png" alt="打印结果"></p>
+<ul>
+<li>第一个黄框内的内容，此时created，<code>this.$refs.test</code>为<code>undefined</code>，获取Dom节点报错，说明此时dom没有生成，挂载还没开始，beforeMount同理。</li>
+<li>红框时为mounted，此时页面打印结果可以看到<code>this.$refs.test</code>已经有值，Dom内的hello world也正常打印出来，说明此时Dom以生成，挂载已完成。</li>
+<li>改变test的值，beforeUpdate时，<code>this.$refs.test</code>已经改变，Dom节点内的hello world并未改变。说明beforeUpdate发生在虚拟 DOM 重新渲染之前，实例的更新发生在Dom重新渲染之前。updated时，<code>this.$refs.test</code>保持更新后的值，Dom节点内的hello world更新为hi。说明updated发生在虚拟 DOM 重新渲染之后。</li>
+<li>调用<code>vm.$destroy()</code>，beforeDestroy时，<code>this.$refs.test</code>值依旧存在，说明在这一步，实例仍然完全可用。destroyed时，<code>this.$refs.test</code>值为<code>undefined</code>，说明此时实例已经被完全销毁。</li>
+</ul>
+<h3 id="created与mounted"><a href="#created与mounted" class="headerlink" title="created与mounted"></a>created与mounted</h3><p>created:在模板渲染成html前调用，即通常初始化某些属性值，然后再渲染成视图。</p>
+<p>mounted:在模板渲染成html后调用，通常是初始化页面完成后，再对html的dom节点进行一些需要的操作。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://segmentfault.com/a/1190000008010666" target="_blank" rel="noopener">Vue2.0 探索之路——生命周期和钩子函数的一些理解</a></p>
+<p><a href="https://segmentfault.com/a/1190000008570622" target="_blank" rel="noopener">关于Vue实例的生命周期created和mounted的区别</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2018/08/01/Vue的生命周期/">Vue的生命周期</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Sanakey</a></p>
+        <p><span>发布时间:</span>2018-08-01, 15:33:19</p>
+        <p><span>最后更新:</span>2018-08-15, 16:45:44</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/08/01/Vue的生命周期/" title="Vue的生命周期">https://sanakey.github.io/2018/08/01/Vue的生命周期/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://sanakey.github.io/2018/08/01/Vue的生命周期/　　作者: Sanakey" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2018/08/08/Vue组件之间的传值/">
+                    Vue组件之间的传值
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2018/07/22/ES6常用新特性二/">
+                    ES6常用新特性(二)
+                </a>
+            </div>
+        
+    </nav>
+
+  
+  
+    
+<div style="padding: 0; margin: 20px auto; width: 90%; text-align: center;">
+    <br>
+    <div>感谢打赏，错误之处欢迎指正交流(`・ω・´) !~~</div>
+    <br>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+        <div class="btn btn-pay">打赏</div>
+    </button>
+    <br>
+    <br>
+    <div id="QR" style="display: none;">
+        
+        <div id="wechat" style="display: inline-block;">
+            <img id="wechat_qr" src="/img/233.gif" alt="Sanakey WeChat Pay"/>
+            <p>微信打赏</p>
+        </div>
+        
+        
+        <div id="alipay" style="display: inline-block">
+            <img id="alipay_qr" src="/img/333.gif" alt="Sanakey Alipay"/>
+            <p>支付宝打赏</p>
+        </div>
+        
+        <br>
+        <br>
+    </div>
+</div>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue生命周期图解"><span class="toc-number">2.</span> <span class="toc-text">Vue生命周期图解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue2-x中的生命周期"><span class="toc-number">3.</span> <span class="toc-text">Vue2.x中的生命周期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实例"><span class="toc-number">4.</span> <span class="toc-text">代码实例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#created与mounted"><span class="toc-number">4.1.</span> <span class="toc-text">created与mounted</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">5.</span> <span class="toc-text">参考</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-4 i,
+        .toc-level-4 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"Vue的生命周期　| Sanakey的小站　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+        <section class="gitalk" id="comments">
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"></link>
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <div id="gitalk-container"></div>
+    <script>
+        var loadComment = function() {
+            var gitalk = new Gitalk({
+                clientID:  '4d79ef314d7eecff6c86',
+                clientSecret: '69414bfea90934424011146006786eca04c840d9',
+                repo: 'sanakey.github.io',
+                id: 'Wed Aug 01 2018 15:33:19 GMT+0800',
+                owner: 'Sanakey',
+                admin: 'Sanakey',
+                distractionFreeMode: 'true'
+            })
+            gitalk.render('gitalk-container')
+        }
+    </script>
+    
+    <script> loadComment(); </script>
+
+</section>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2018/08/08/Vue组件之间的传值/" title="上一篇: Vue组件之间的传值">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2018/07/22/ES6常用新特性二/" title="下一篇: ES6常用新特性(二)">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/08/15/Vuex简介/">Vuex简介</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/08/Vue组件之间的传值/">Vue组件之间的传值</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/01/Vue的生命周期/">Vue的生命周期</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/22/ES6常用新特性二/">ES6常用新特性(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/19/ES6常用新特性一/">ES6常用新特性(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/16/面向对象与面向过程/">面向对象与面向过程</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/14/你不知道的JavaScript-对象/">你不知道的JavaScript--对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/13/你不知道的JavaScript-this解析/">你不知道的JavaScript--this解析</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/08/你不知道的JavaScript-闭包/">你不知道的JavaScript--闭包</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/06/你不知道的JavaScript-作用域/">你不知道的JavaScript--作用域</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/03/微信小程序-自定义tabBar组件/">微信小程序--自定义tabBar组件</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/02/Git与Github常用命令/">Git与Github常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/01/微信小程序入门-事件/">微信小程序入门--事件</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/27/微信小程序入门-二级菜单/">微信小程序入门--二级菜单</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/26/Github-Pages-Hexo从零开始的免费建站教程/">Github Pages+Hexo从零开始的免费建站教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/25/My-First-Post/">My First Post</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/25/hello-world/">Hello World</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2018 Sanakey
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 10;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618},"display":{"superSample":2,"width":60,"height":120,"position":"right","hOffset":50,"vOffset":35},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2}});</script></body>
+</html>
